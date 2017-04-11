@@ -20,26 +20,24 @@ const signIn = (data) => {
 }
 
 const changePassword = (data) => {
-  // console.log(`CHANGE PASSWORD: ${data.passwords}`)
-  // return $.ajax({
-  //   url: config.apiOrigin + '/change-password/' + store.user.id,
-  //   method: 'PATCH',
-  //   headers: {
-  //     'Authorization': 'Token token=' + store.user.token
-  //   },
-  //   data
-  // })
+  return $.ajax({
+    url: config.apiOrigin + '/change-password/' + store.user.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data
+  })
 }
 
 const signOut = () => {
-  // console.log('Sign Out')
-  // return $.ajax({
-  //   url: config.apiOrigin + '/sign-out/' + store.user.id,
-  //   method: 'DELETE',
-  //   headers: {
-  //     'Authorization': 'Token token=' + store.user.token
-  //   }
-  // })
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/' + store.user.id,
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
 }
 
 module.exports = {

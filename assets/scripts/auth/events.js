@@ -28,10 +28,10 @@ const onSignUp = function (event) {
 }
 
 const onSignIn = function (event) {
+  console.log('onSignIn')
+
   const data = getFormFields(this)
   event.preventDefault()
-
-  console.log('onSignIn')
 
   if (!data.credentials.email) {
     game.message('email required')
@@ -44,45 +44,50 @@ const onSignIn = function (event) {
   }
 }
 
-// const onChangePassword = function (event) {
-//   const data = getFormFields(event.target)
-//   event.preventDefault()
-//
-//   // console.log(`CHANGE PASSWORD: ${data.passwords.old} to ${data.passwords.new}`)
-//
-//   if (data.passwords.old.length !== 0 && data.passwords.new.length !== 0) {
-//     api.changePassword(data)
-//       .then(ui.changePasswordSuccess)
-//       .catch(ui.changePasswordFailure)
-//   } else {
-//     console.log('old and new password required')
-//   }
-// }
+const onChangePassword = function (event) {
+  console.log('onChangePassword')
 
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//
-//   api.signOut()
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
+  const data = getFormFields(event.target)
+  event.preventDefault()
+
+  if (!data.passwords.old) {
+    game.message('old password required')
+  } else if (!data.passwords.new.length) {
+    game.message('new password required')
+  } else {
+    api.changePassword(data)
+      .then(ui.changePasswordSuccess)
+      .catch(ui.changePasswordFailure)
+  }
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
 
 const addHandlers = () => {
   // using $('body') before the event handler binds the handler
   // to an element even if it's dynamically created later
 
-  $('body').on('click', '#auth-cancel-btn', game.onSplashScreenView)
+  $('.content-state').on('click', '#auth-cancel-btn', game.onSplashScreenView)
 
   // $('#sign-up-btn').on('click', game.onSignUpView)
-  $('body').on('click', '#sign-up-btn', game.onSignUpView)
-  $('body').on('submit', '#sign-up', onSignUp)
+  $('.nav-state').on('click', '#sign-up-btn', game.onSignUpView)
+  $('.content-state').on('submit', '#sign-up', onSignUp)
 
   // $('#sign-in-btn').on('click', game.onSignInView)
-  $('body').on('click', '#sign-in-btn', game.onSignInView)
-  $('body').on('submit', '#sign-in', onSignIn)
+  $('.nav-state').on('click', '#sign-in-btn', game.onSignInView)
+  $('.content-state').on('submit', '#sign-in', onSignIn)
 
-  // $('#change-password').on('submit', onChangePassword)
-  // $('#sign-out').on('click', onSignOut)
+  $('.nav-state').on('click', '#change-password-btn', game.onChangePasswordView)
+  $('.content-state').on('submit', '#change-password', onChangePassword)
+  $('.content-state').on('click', '#change-password-cancel-btn', game.backToGame)
+
+  $('.nav-state').on('click', '#sign-out-btn', onSignOut)
 }
 
 module.exports = {
