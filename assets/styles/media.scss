@@ -1,0 +1,35 @@
+// media queries
+
+@media (max-width: 768px) {
+  .navbar {
+    h1 {
+      font-size: $font-size-base * 2.5;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    h1 {
+      font-size: $font-size-base * 2;
+    }
+  }
+
+  .message {
+    font-size: $font-size-base * 1.5;
+  }
+
+  .board {
+    height: floor($board-square * .67);
+    width: floor($board-square * .67);
+  }
+
+  .square {
+    height: floor($board-square * .67 / 3);
+    width: floor($board-square * .67 / 3);
+  }
+
+  .btn-lg {
+    font-size: $font-size-base * 4;
+  }
+}

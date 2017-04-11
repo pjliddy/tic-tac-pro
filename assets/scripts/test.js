@@ -317,7 +317,7 @@ Board.prototype.run = function () {
     values.sort()
     const losses = values.lastIndexOf(-1) + 1
     const ties = values.lastIndexOf(0) - losses + 1
-    const wins = values.lastIndexOf(1) - ties + 1
+    const wins = values.lastIndexOf(1) - ties - losses + 1
 
     // get the sum of the values for the filtered games
     sum = values.reduce(function (a, b) {
@@ -360,17 +360,17 @@ Board.prototype.test = function () {
     if (this.turnNum() >= 5) {
       const outcome = this.checkWin()
       if (outcome === 1) {
-        console.log(`'X' won in ${turns.length} turns`)
+        console.log(`'X' wins in ${turns.length} turns`)
         break
       } else if (outcome === -1) {
-        console.log(`'O' won in ${turns.length} turns`)
+        console.log(`'O' wins in ${turns.length} turns`)
         break
       }
     }
   }
 
   if (!this.checkWin()) {
-    console.log(`No Winner`)
+    console.log(`Tie Game`)
   }
 
   for (let i = turns.length; i < this.numSquares; i++) {
@@ -391,7 +391,7 @@ module.exports = {
 
 /*  REPL TEST SCRIPTS
 
-var x = require('./lib/script.js')
+var x = require('./assets/scripts/test.js')
 var board = new x.Board()
 
 board.run()

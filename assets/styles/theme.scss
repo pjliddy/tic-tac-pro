@@ -1,0 +1,105 @@
+$board-square: 450px;
+$border-radius-base: 0;
+
+// document styles
+
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 0;
+}
+
+// navbar styles
+
+.navbar {
+  background-color: $background-color-base;
+  border: 0;
+  padding: 1em 0 0;
+
+  h1 {
+    font-size: $font-size-base * 3;
+    font-weight: $font-weight-base;
+    margin: 0;
+  }
+}
+
+.dropdown-menu {
+  font-size: $font-size-base;
+
+  li > a {
+    font-weight: $font-weight-base;
+  }
+}
+
+// game layout styles
+
+.game {
+  margin: 0 auto;
+  // max-height: $board-square;
+  // max-width: $board-square;
+}
+
+.board {
+  height: $board-square;
+  margin: 0 auto;
+  width: $board-square;
+}
+
+.square {
+  float: left;
+  height: $board-square / 3;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: $board-square / 3;
+}
+
+// grid border styles
+
+.border-row-center {
+  border-left: 1px solid $gray-base;
+  border-right: 1px solid $gray-base;
+}
+
+.border-col-center {
+  border-bottom: 1px solid $gray-base;
+  border-top: 1px solid $gray-base;
+}
+
+.border-center {
+  border: 1px solid $gray-base;
+}
+
+// button styles
+
+.btn {
+  border-radius: $border-radius-base;
+  font-size: $font-size-base * 1.5;
+  font-weight: $font-weight-base;
+}
+
+.btn-lg {
+  border: 0;
+  font-size: $font-size-base * 5;
+  font-weight: $font-weight-light;
+  height: 100%;
+  line-height: 1;
+  width: 100%;
+}
+
+// feedback styles
+
+.message {
+  font-size: 2em;
+  margin-top: 1em;
+  text-align: center;
+}
