@@ -1,25 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `link` tags unless you know what you are doing -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
+    <!-- Do not add `script` tags unless you know what you are doing -->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body class="container-fluid">
+    <div class="container">
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-    </body>
+    <!-- nav component -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              menu
+            </button>
+            <h1>tic tac toe</h1>
+          </div>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">user@email.com <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="user-select">
+                  <li><a href="#" disabled>Save Game</a></li>
+                  <li><a href="#">Load Game</a></li>
+                  <li><a href="#">Change Password</a></li>
+                  <li><a href="#">Sign Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- content component -->
+      <div class="game">
+        <div class="board">
+          <div class="square">
+            <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
+          </div>
+          <div class="square border-row-center">
+            <button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button>
+          </div>
+          <div class="square">
+            <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
+          </div>
+          <div class="clearfix"></div>
+          <div class="square border-col-center">
+            <button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button>
+          </div>
+          <div class="square border-center">
+            <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
+          </div>
+          <div class="square border-col-center">
+            <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
+          </div>
+          <div class="clearfix"></div>
+          <div class="square">
+            <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
+          </div>
+          <div class="square border-row-center">
+            <button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button>
+          </div>
+          <div class="square">
+            <button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button>
+          </div>
+          <div class="clearfix"></div>
+        </div><!--/.board -->
+      </div><!--/.game -->
+
+      <!-- message component -->
+      <div class="message">
+        game message
+      </div>
+
+      <!-- footer component -->
+      <footer class="navbar-fixed-bottom">
+        <div class="container">
+          <p class="text-muted">&copy; 2017 Patrick Liddy</p>
+        </div>
+      </footer>
+    </div><!--/.container -->
+  </body>
 </html>
