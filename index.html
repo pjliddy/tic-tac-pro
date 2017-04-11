@@ -16,7 +16,10 @@
 
     <!-- nav component -->
       <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container-fluid nav-state">
+          <button class="btn btn-default">sign up</button>
+          <button class="btn btn-default">sign in</button>
+          <!--
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -24,7 +27,6 @@
             </button>
             <h1>tic tac toe</h1>
           </div>
-
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -37,13 +39,50 @@
                 </ul>
               </li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
+          -->
         </div><!--/.container-fluid -->
       </nav>
 
       <!-- content component -->
       <div class="game">
-        <div class="board">
+        <!-- default public view state -->
+        <!-- <div class="content-state grid">
+          <div class="square">t</div>
+          <div class="square border-row-center">i</div>
+          <div class="square">c</div>
+          <div class="square border-col-center">t</div>
+          <div class="square border-center">a</div>
+          <div class="square border-col-center">c</div>
+          <div class="square">t</div>
+          <div class="square border-row-center">o</div>
+          <div class="square">e</div>
+        </div> -->
+
+        <div class="content-state form-box">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+        <!-- <div class="board">
           <div class="square">
             <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
           </div>
@@ -74,13 +113,12 @@
             <button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button>
           </div>
           <div class="clearfix"></div>
-        </div><!--/.board -->
+        </div> --><!--/.board -->
+
       </div><!--/.game -->
 
       <!-- message component -->
-      <div class="message">
-        game message
-      </div>
+      <div class="message">sign in to play</div>
 
       <!-- footer component -->
       <footer class="navbar-fixed-bottom">

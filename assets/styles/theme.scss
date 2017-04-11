@@ -1,4 +1,4 @@
-$board-square: 450px;
+$grid-square: 450px;
 $border-radius-base: 0;
 
 // document styles
@@ -23,6 +23,7 @@ body {
 .navbar {
   background-color: $background-color-base;
   border: 0;
+  height: 90px;
   padding: 1em 0 0;
 
   h1 {
@@ -30,6 +31,10 @@ body {
     font-weight: $font-weight-base;
     margin: 0;
   }
+}
+
+.nav-state {
+  text-align: center;
 }
 
 .dropdown-menu {
@@ -44,23 +49,33 @@ body {
 
 .game {
   margin: 0 auto;
-  // max-height: $board-square;
-  // max-width: $board-square;
+  max-height: $grid-square;
+  max-width: $grid-square;
 }
 
-.board {
-  height: $board-square;
+.grid {
+  height: $grid-square;
   margin: 0 auto;
-  width: $board-square;
+  width: $grid-square;
+}
+
+.form-box {
+  border: 1px solid $gray-base;
+  height: $grid-square;
+  margin: 0 auto;
+  width: $grid-square;
 }
 
 .square {
   float: left;
-  height: $board-square / 3;
+  font-size: $font-size-base * 5;
+  font-weight: $font-weight-light;
+  height: floor($grid-square / 3);
+  line-height: floor($grid-square / 3);
   margin: 0;
   padding: 0;
   text-align: center;
-  width: $board-square / 3;
+  width: floor($grid-square / 3);
 }
 
 // grid border styles

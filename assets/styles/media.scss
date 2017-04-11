@@ -19,14 +19,17 @@
     font-size: $font-size-base * 1.5;
   }
 
-  .board {
-    height: floor($board-square * .67);
-    width: floor($board-square * .67);
+  .grid {
+    height: floor($grid-square * .67);
+    width: floor($grid-square * .67);
   }
 
   .square {
-    height: floor($board-square * .67 / 3);
-    width: floor($board-square * .67 / 3);
+    font-size: $font-size-base * 4;
+    font-weight: $font-weight-light;
+    height: floor($grid-square * .67 / 3);
+    line-height: floor($grid-square * .67 / 3);
+    width: floor($grid-square * .67 / 3);
   }
 
   .btn-lg {
