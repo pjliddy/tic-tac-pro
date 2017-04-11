@@ -136,7 +136,7 @@ const startGameView = function () {
 
   $('.content-state').html(viewState)
   setPrivateNav()
-  message('player X\'s turn')
+  message('ready to play')
 }
 
 const onChangePasswordView = function () {
@@ -171,6 +171,26 @@ const backToGame = function () {
   }
 }
 
+const onPlayGameView = function () {
+  console.log('onSplashScreenView')
+
+  const viewState = '<div class="grid">' +
+    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square border-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+  '</div>'
+
+  $('.content-state').html(viewState)
+  setPrivateNav()
+  message('player X\'s turn')
+}
+
 module.exports = {
   initGame,
   message,
@@ -181,5 +201,6 @@ module.exports = {
   onSignInView,
   startGameView,
   onChangePasswordView,
-  backToGame
+  backToGame,
+  onPlayGameView
 }

@@ -107,9 +107,11 @@ body {
   border: 0;
   font-size: $font-size-base * 5;
   font-weight: $font-weight-light;
-  height: 100%;
+  // height: 100%;
   line-height: 1;
-  width: 100%;
+  // width: 100%;
+  height: floor($grid-square / 3);
+  width: floor($grid-square / 3);
 }
 
 // form styles

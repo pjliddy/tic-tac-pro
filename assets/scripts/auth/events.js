@@ -88,6 +88,8 @@ const addHandlers = () => {
   $('.content-state').on('click', '#change-password-cancel-btn', game.backToGame)
 
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
+
+  $('.content-state').on('click', '#play-game-btn', game.onPlayGameView)
 }
 
 module.exports = {
