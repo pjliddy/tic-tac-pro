@@ -47,7 +47,7 @@ body {
 
 // game layout styles
 
-.game {
+.content-state {
   margin: 0 auto;
   max-height: $grid-square;
   max-width: $grid-square;
@@ -63,6 +63,7 @@ body {
   border: 1px solid $gray-base;
   height: $grid-square;
   margin: 0 auto;
+  padding: 1em;
   width: $grid-square;
 }
 
@@ -109,6 +110,12 @@ body {
   height: 100%;
   line-height: 1;
   width: 100%;
+}
+
+// form styles
+
+.form-control {
+  font-size: $font-size-base;
 }
 
 // feedback styles

@@ -17,8 +17,8 @@
     <!-- nav component -->
       <nav class="navbar navbar-default">
         <div class="container-fluid nav-state">
-          <button class="btn btn-default">sign up</button>
-          <button class="btn btn-default">sign in</button>
+          <button class="btn btn-default" id="sign-up-btn">sign up</button>
+          <button class="btn btn-default" id="sign-in-btn">sign in</button>
           <!--
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -45,9 +45,9 @@
       </nav>
 
       <!-- content component -->
-      <div class="game">
+      <div class="content-state">
         <!-- default public view state -->
-        <!-- <div class="content-state grid">
+        <div class="grid">
           <div class="square">t</div>
           <div class="square border-row-center">i</div>
           <div class="square">c</div>
@@ -57,31 +57,26 @@
           <div class="square">t</div>
           <div class="square border-row-center">o</div>
           <div class="square">e</div>
-        </div> -->
-
-        <div class="content-state form-box">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Check me out
-              </label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
         </div>
+
+        <!-- <div class="form-box">
+          <form id="sign-up">
+            <fieldset>
+              <legend>sign up</legend>
+              <div class="form-group">
+                <input type="email" class="form-control" name=credentials[email] id="sign-up-email" placeholder="email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name=credentials[password] id="sign-up-password" placeholder="password">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name=credentials[password_confirmation] id="sign-up-password-confirm" placeholder="confirm password">
+              </div>
+              <button type="submit" class="btn btn-default pull-right">sign up</button>
+              <button class="btn btn-link pull-right">cancel</button>
+            </fieldset>
+          </form>
+        </div> -->
         <!-- <div class="board">
           <div class="square">
             <button class="btn btn-lg btn-default"><span class="player">&#10005;</span></button>
