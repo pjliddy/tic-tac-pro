@@ -91,8 +91,8 @@ const onSignUpView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
-  $('#sign-up').on('submit', events.onSignUp)
-  $('#auth-cancel-btn').on('click', onSplashScreenView)
+  // $('#sign-up').on('submit', events.onSignUp)
+  // $('#auth-cancel-btn').on('click', onSplashScreenView)
 }
 
 const onSignInView = function () {
@@ -115,8 +115,8 @@ const onSignInView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
-  $('#sign-in').on('submit', events.onSignIn)
-  $('#auth-cancel-btn').on('click', onSplashScreenView)
+  // $('#sign-in').on('submit', events.onSignIn)
+  // $('#auth-cancel-btn').on('click', onSplashScreenView)
 }
 
 const startGameView = function () {
