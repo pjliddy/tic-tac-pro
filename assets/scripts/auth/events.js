@@ -74,7 +74,9 @@ const onSignOut = function (event) {
 
 const onPlayGame = function () {
   views.playGameView()
-  game.initGame()
+  api.createGame()
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure)
 }
 
 const addHandlers = () => {

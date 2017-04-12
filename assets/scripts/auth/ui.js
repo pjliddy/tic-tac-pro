@@ -2,6 +2,7 @@
 
 const store = require('../store.js')
 const views = require('../views.js')
+const game = require('../game.js')
 
 const signUpSuccess = (data) => {
   console.log('signUpSuccess():', data)
@@ -50,6 +51,17 @@ const signOutFailure = (error) => {
   views.message('sign out failed')
 }
 
+const createGameSuccess = (data) => {
+  console.log('createGameSuccess():', data)
+  game.initGame()
+  views.playGameView()
+}
+
+const createGameFailure = (error) => {
+  console.error('createGameFailure():', error)
+  views.message('couldn\'t save game')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -58,5 +70,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  createGameSuccess,
+  createGameFailure
 }
