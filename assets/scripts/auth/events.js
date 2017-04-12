@@ -2,6 +2,7 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`)
 const views = require('./../views.js')
+const game = require('./../game.js')
 
 const api = require('./api')
 const ui = require('./ui')
@@ -71,6 +72,11 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onPlayGame = function () {
+  views.playGameView()
+  game.initGame()
+}
+
 const addHandlers = () => {
   // using $('body') before the event handler binds the handler
   // to an element even if it's dynamically created later
@@ -91,7 +97,9 @@ const addHandlers = () => {
 
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
 
-  $('.content-state').on('click', '#play-game-btn', views.onPlayGameView)
+  $('.content-state').on('click', '#play-game-btn', onPlayGame)
+
+  $('.content-state').on('click', '.play-btn', game.chooseSquare)
 }
 
 module.exports = {

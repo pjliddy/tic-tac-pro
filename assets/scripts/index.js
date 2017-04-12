@@ -19,5 +19,5 @@ const views = require('./views.js')
 // On document ready
 $(() => {
   authEvents.addHandlers()
-  views.initGame()
+  views.initViews()
 })

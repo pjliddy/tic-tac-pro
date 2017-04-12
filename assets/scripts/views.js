@@ -1,10 +1,7 @@
 'use strict'
 
-// const events = require('./auth/events.js')
-const active = false
-
-const initGame = function () {
-  console.log('initGame')
+const initViews = function () {
+  console.log('initViews')
 }
 
 const message = function (msg) {
@@ -160,35 +157,41 @@ const onChangePasswordView = function () {
 }
 
 const backToGame = function () {
-  if (active) {
-    message('active game')
-  } else {
-    startGameView()
-  }
+  // if (active) {
+  //   message('active game')
+  // } else {
+  startGameView()
+  // }
 }
 
-const onPlayGameView = function () {
+const playGameView = function () {
   console.log('onSplashScreenView')
 
   const viewState = '<div class="grid">' +
-    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square border-row-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square border-col-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square border-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square border-col-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square border-row-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="0"></button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default play-btn" data-id="1"></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="2"></button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default play-btn" data-id="3"></button></div>' +
+    '<div class="square border-center"><button class="btn btn-lg btn-default play-btn" data-id="4"></button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default play-btn" data-id="5"></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="6"></button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default play-btn" data-id="7"></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="8"></button></div>' +
   '</div>'
 
   $('.content-state').html(viewState)
   setPrivateNav()
-  message('player X\'s turn')
+}
+
+const gameOverView = function () {
+  const viewState = '<button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button>'
+
+  $('.border-center').html(viewState)
+  message('game over')
 }
 
 module.exports = {
-  initGame,
+  initViews,
   message,
   setPublicNav,
   setPrivateNav,
@@ -198,5 +201,6 @@ module.exports = {
   startGameView,
   onChangePasswordView,
   backToGame,
-  onPlayGameView
+  playGameView,
+  gameOverView
 }
