@@ -54,6 +54,7 @@ body {
 }
 
 .grid {
+  box-sizing: border-box;
   height: $grid-square;
   margin: 0 auto;
   width: $grid-square;
@@ -71,12 +72,13 @@ body {
   float: left;
   font-size: $font-size-base * 5;
   font-weight: $font-weight-light;
-  height: floor($grid-square / 3);
+  height: 150px; //floor($grid-square / 3);
   line-height: floor($grid-square / 3);
   margin: 0;
   padding: 0;
+  position: relative;
   text-align: center;
-  width: floor($grid-square / 3);
+  width: 150px; //floor($grid-square / 3);
 }
 
 // grid border styles
@@ -102,18 +104,28 @@ body {
   font-size: $font-size-base * 1.5;
   font-weight: $font-weight-base;
 }
+.btn-default:hover {
+  background-color: $highlight-color;
+}
 
 .btn-lg {
   border: 0;
+  bottom: 0;
+  display: block;
   font-size: $font-size-base * 5;
   font-weight: $font-weight-light;
-  // height: 100%;
+  height: auto;
+  left: 0;
   line-height: 1;
-  // width: 100%;
-  height: floor($grid-square / 3);
-  width: floor($grid-square / 3);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
 }
 
+.btn-grid {
+  font-size: $font-size-base * 1.5;
+}
 // form styles
 
 .form-control {

@@ -1,7 +1,7 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-const game = require('./../game.js')
+const views = require('./../views.js')
 
 const api = require('./api')
 const ui = require('./ui')
@@ -12,14 +12,16 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
 
-  if (!data.credentials.email) {
-    game.message('email required')
-  } else if (!data.credentials.password) {
-    game.message('password required')
-  } else if (!data.credentials.password_confirmation) {
-    game.message('password confirmation required')
+  console.log(data.credentials)
+
+  if (data.credentials.email.length === 0) {
+    views.message('email required')
+  } else if (data.credentials.password.length === 0) {
+    views.message('password required')
+  } else if (!data.credentials.password_confirmation.length === 0) {
+    views.message('password confirmation required')
   } else if (data.credentials.password !== data.credentials.password_confirmation) {
-    game.message('passwords must match')
+    views.message('passwords must match')
   } else {
     api.signUp(data)
       .then(ui.signUpSuccess)
@@ -34,9 +36,9 @@ const onSignIn = function (event) {
   event.preventDefault()
 
   if (!data.credentials.email) {
-    game.message('email required')
+    views.message('email required')
   } else if (!data.credentials.password) {
-    game.message('password required')
+    views.message('password required')
   } else {
     api.signIn(data)
       .then(ui.signInSuccess)
@@ -51,9 +53,9 @@ const onChangePassword = function (event) {
   event.preventDefault()
 
   if (!data.passwords.old) {
-    game.message('old password required')
+    views.message('old password required')
   } else if (!data.passwords.new.length) {
-    game.message('new password required')
+    views.message('new password required')
   } else {
     api.changePassword(data)
       .then(ui.changePasswordSuccess)
@@ -73,23 +75,23 @@ const addHandlers = () => {
   // using $('body') before the event handler binds the handler
   // to an element even if it's dynamically created later
 
-  $('.content-state').on('click', '#auth-cancel-btn', game.onSplashScreenView)
+  $('.content-state').on('click', '#auth-cancel-btn', views.onSplashScreenView)
 
-  // $('#sign-up-btn').on('click', game.onSignUpView)
-  $('.nav-state').on('click', '#sign-up-btn', game.onSignUpView)
+  // $('#sign-up-btn').on('click', views.onSignUpView)
+  $('.nav-state').on('click', '#sign-up-btn', views.onSignUpView)
   $('.content-state').on('submit', '#sign-up', onSignUp)
 
-  // $('#sign-in-btn').on('click', game.onSignInView)
-  $('.nav-state').on('click', '#sign-in-btn', game.onSignInView)
+  // $('#sign-in-btn').on('click', views.onSignInView)
+  $('.nav-state').on('click', '#sign-in-btn', views.onSignInView)
   $('.content-state').on('submit', '#sign-in', onSignIn)
 
-  $('.nav-state').on('click', '#change-password-btn', game.onChangePasswordView)
+  $('.nav-state').on('click', '#change-password-btn', views.onChangePasswordView)
   $('.content-state').on('submit', '#change-password', onChangePassword)
-  $('.content-state').on('click', '#change-password-cancel-btn', game.backToGame)
+  $('.content-state').on('click', '#change-password-cancel-btn', views.backToGame)
 
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
 
-  $('.content-state').on('click', '#play-game-btn', game.onPlayGameView)
+  $('.content-state').on('click', '#play-game-btn', views.onPlayGameView)
 }
 
 module.exports = {

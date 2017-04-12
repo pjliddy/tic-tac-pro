@@ -1,53 +1,53 @@
 'use strict'
 
 const store = require('../store.js')
-const game = require('../game.js')
+const views = require('../views.js')
 
 const signUpSuccess = (data) => {
   console.log('signUpSuccess():', data)
-  game.startGameView()
+  views.startGameView()
 }
 
 const signUpFailure = (error) => {
   console.error('signUpFailure():', error)
-  game.message('sign up failed')
+  views.message('sign up failed')
 }
 
 const signInSuccess = (response) => {
   console.log('signInSuccess():', response.user)
   // store the user object (data)
   store.user = response.user
-  game.startGameView()
+  views.startGameView()
 }
 
 const signInFailure = (error) => {
   console.error('signInFailure():', error)
-  game.message('sign in failed')
+  views.message('sign in failed')
 }
 
 const changePasswordSuccess = (response) => {
   console.log('changePasswordSuccess:', response)
-  game.message('password changed')
-  game.backToGame()
+  views.message('password changed')
+  views.backToGame()
 }
 
 const changePasswordFailure = (error) => {
   console.error('changePasswordFailure:', error)
-  game.message('password change failed')
+  views.message('password change failed')
 }
 
 const signOutSuccess = (response) => {
   console.log('signOutSuccess:', response)
-  game.message('signed out')
+  views.message('signed out')
   // remove user from current session store
   store.user = null
-  game.setPublicNav()
-  game.onSplashScreenView()
+  views.setPublicNav()
+  views.onSplashScreenView()
 }
 
 const signOutFailure = (error) => {
   console.log('signOutFailure:', error)
-  game.message('sign out failed')
+  views.message('sign out failed')
 }
 
 module.exports = {

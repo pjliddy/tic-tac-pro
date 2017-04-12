@@ -1,6 +1,6 @@
 'use strict'
 
-const events = require('./auth/events.js')
+// const events = require('./auth/events.js')
 const active = false
 
 const initGame = function () {
@@ -85,14 +85,12 @@ const onSignUpView = function () {
           '<input type="password" class="form-control" name=credentials[password_confirmation] id="sign-up-password-confirm" placeholder="confirm password">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
-        '<button class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
+        '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
       '</fieldset>' +
     '</form>' +
   '</div>'
 
   $('.content-state').html(viewState)
-  // $('#sign-up').on('submit', events.onSignUp)
-  // $('#auth-cancel-btn').on('click', onSplashScreenView)
 }
 
 const onSignInView = function () {
@@ -109,14 +107,12 @@ const onSignInView = function () {
           '<input type="password" class="form-control" name=credentials[password] id="sign-in-password" placeholder="password">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
-        '<button class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
+        '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
       '</fieldset>' +
     '</form>' +
   '</div>'
 
   $('.content-state').html(viewState)
-  // $('#sign-in').on('submit', events.onSignIn)
-  // $('#auth-cancel-btn').on('click', onSplashScreenView)
 }
 
 const startGameView = function () {
@@ -127,7 +123,7 @@ const startGameView = function () {
     '<div class="square border-row-center"></div>' +
     '<div class="square"></div>' +
     '<div class="square border-col-center"></div>' +
-    '<div class="square border-center"><button class="btn btn-default" id="play-game-btn">play</button></div>' +
+    '<div class="square border-center"><button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button></div>' +
     '<div class="square border-col-center"></div>' +
     '<div class="square"></div>' +
     '<div class="square border-row-center"></div>' +
@@ -175,15 +171,15 @@ const onPlayGameView = function () {
   console.log('onSplashScreenView')
 
   const viewState = '<div class="grid">' +
-    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square border-row-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square border-col-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square border-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square border-col-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square border-row-center"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
-    '<div class="square"><button class="btn btn-lg btn-default"><span class="player">&#12295;</span></button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square border-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square border-col-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square border-row-center"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
+    '<div class="square"><button class="btn btn-lg btn-default player">&#12295;</button></div>' +
   '</div>'
 
   $('.content-state').html(viewState)
