@@ -19,7 +19,8 @@
     font-size: $font-size-base * 1.5;
   }
 
-  .grid {
+  .grid,
+  .form-box {
     height: floor($grid-square * .67);
     width: floor($grid-square * .67);
   }
@@ -34,5 +35,9 @@
 
   .btn-lg {
     font-size: $font-size-base * 4;
+  }
+
+  .btn-grid {
+    font-size: $font-size-base * 1.5;
   }
 }

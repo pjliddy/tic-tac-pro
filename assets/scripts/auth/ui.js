@@ -51,15 +51,24 @@ const signOutFailure = (error) => {
   views.message('sign out failed')
 }
 
-const createGameSuccess = (data) => {
-  console.log('createGameSuccess():', data)
-  game.initGame()
-  views.playGameView()
+const createGameSuccess = (response) => {
+  console.log('createGameSuccess():', response)
+  store.game = response.game
 }
 
 const createGameFailure = (error) => {
   console.error('createGameFailure():', error)
   views.message('couldn\'t save game')
+}
+
+const updateGameSuccess = (data) => {
+  console.log('updateGameSuccess():', data)
+  // views.startGameView()
+}
+
+const updateGameFailure = (error) => {
+  console.error('updateGameFailure():', error)
+  // views.message('update failed')
 }
 
 module.exports = {
@@ -72,5 +81,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

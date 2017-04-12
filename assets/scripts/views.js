@@ -34,7 +34,7 @@ const setPrivateNav = function () {
         '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">user@email.com <span class="caret"></span></a>' +
         '<ul class="dropdown-menu" id="user-select">' +
           // '<li><a href="#" disabled>Save Game</a></li>' +
-          '<li><a href="#" id="load-game-btn">Load Game</a></li>' +
+          // '<li><a href="#" id="load-game-btn">Load Game</a></li>' +
           '<li><a href="#" id="change-password-btn">Change Password</a></li>' +
           '<li><a href="#" id="sign-out-btn">Sign Out</a></li>' +
         '</ul>' +

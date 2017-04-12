@@ -46,7 +46,19 @@ const createGame = () => {
     method: 'POST',
     headers: {
       'Authorization': 'Token token=' + store.user.token
-    }
+    },
+    body: {}
+  })
+}
+
+const updateGame = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
   })
 }
 
@@ -55,5 +67,6 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  createGame
+  createGame,
+  updateGame
 }
