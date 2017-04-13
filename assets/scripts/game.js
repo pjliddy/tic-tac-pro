@@ -27,7 +27,6 @@ const initGame = function () {
   moves.fill('')
   turn = 0
   player = 'x'
-
   views.message('player ' + player + '\'s turn')
 }
 
@@ -82,7 +81,7 @@ const chooseSquare = function (evt) {
     disableEmptySquares()
 
     if (status !== 0) {
-      views.message('player ' + player.toUpperCase() + ' wins')
+      views.message('player ' + player.toUpperCase() + ' won')
       if (player === 'x') {
         api.getIndex(data)
           .then(ui.getIndexSuccess)
@@ -105,11 +104,16 @@ const chooseSquare = function (evt) {
 
 const updateSquare = function (sqObj) {
   // set char
+  let playerChar
   if (player === 'x') {
-    $(sqObj).closest('.square').html(xChar)
+    playerChar = xChar
   } else {
-    $(sqObj).closest('.square').html(oChar)
+    playerChar = oChar
   }
+
+  $(sqObj).fadeOut(100, function () {
+    $(sqObj).closest('.square').html(playerChar).fadeIn(100)
+  })
 }
 
 const togglePlayer = function () {
@@ -158,7 +162,11 @@ const disableEmptySquares = function () {
     if (moves[i] !== '') {
       // get square divs with data-id = i
       // $('[data-id="' + i + '"]').html('')
-      $('.play-btn[data-id]').closest('.square').html('')
+      // $('.play-btn[data-id]').closest('.square').html('')
+
+      $('.play-btn[data-id]').fadeOut(100, function () {
+        $('.play-btn[data-id]').closest('.square').html('').fadeIn(100)
+      })
     }
   }
 }

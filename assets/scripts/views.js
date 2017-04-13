@@ -8,9 +8,9 @@ const message = function (msg) {
   $('.message').html(msg)
 }
 
-const addWinMessage = function (wins) {
+const addMessage = function (msg) {
   const current = $('.message').html()
-  $('.message').html(current + '<br/>' + wins + ' times')
+  $('.message').html(current + '<br/>' + msg)
 }
 
 const setPublicNav = function () {
@@ -149,10 +149,9 @@ const startGameView = function () {
     '<div class="square"></div>' +
   '</div>'
 
-  setPrivateNav()
-  message('')
-
   $('.content-state').fadeOut(150, function () {
+    message('')
+    setPrivateNav()
     $('.content-state').html(viewState).fadeIn(150)
   })
 }
@@ -192,7 +191,7 @@ const backToGame = function () {
 }
 
 const playGameView = function () {
-  console.log('onSplashScreenView')
+  console.log('playGameView')
 
   const viewState = '<div class="grid">' +
     '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="0"></button></div>' +
@@ -206,10 +205,7 @@ const playGameView = function () {
     '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="8"></button></div>' +
   '</div>'
 
-  $('.content-state').fadeOut(150, function () {
-    setPrivateNav()
-    $('.content-state').html(viewState).fadeIn(150)
-  })
+  $('.content-state').html(viewState)
 }
 
 const gameOverView = function () {
@@ -226,7 +222,7 @@ const gameOverView = function () {
 module.exports = {
   initViews,
   message,
-  addWinMessage,
+  addMessage,
   setPublicNav,
   setPrivateNav,
   onSplashScreenView,

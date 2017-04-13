@@ -74,8 +74,24 @@ const updateGameFailure = (error) => {
 
 const getIndexSuccess = (response) => {
   console.log('getIndexSuccess():', response)
-  const wins = response.games.length
-  views.addWinMessage(wins)
+
+  let message = ''
+
+  switch (response.games.length) {
+    case 1:
+      message = 'your 1st game'
+      break
+    case 2:
+      message = 'your 2nd game'
+      break
+    case 3:
+      message = 'your 3rd game'
+      break
+    default:
+      message = 'your ' + response.games.length + 'th game'
+  }
+
+  views.addMessage(message)
 }
 
 const getIndexFailure = (error) => {
