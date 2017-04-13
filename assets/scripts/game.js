@@ -68,7 +68,7 @@ const chooseSquare = function (evt) {
       .catch(ui.updateGameFailure)
   } else {
     // game over, man!
-    views.gameOverView()
+    views.onGameOverView()
     over = true
 
     data.game.over = over

@@ -19,7 +19,7 @@ const signInSuccess = (response) => {
   console.log('signInSuccess():', response.user)
   // store the user object (data)
   store.user = response.user
-  views.startGameView()
+  views.onStartGameView()
 }
 
 const signInFailure = (error) => {
@@ -29,7 +29,7 @@ const signInFailure = (error) => {
 
 const changePasswordSuccess = (response) => {
   console.log('changePasswordSuccess:', response)
-  views.backToGame()
+  views.onStartGameView()
   views.message('password changed')
 }
 
@@ -64,7 +64,6 @@ const createGameFailure = (error) => {
 
 const updateGameSuccess = (response) => {
   console.log('updateGameSuccess():', response)
-  // views.startGameView()
 }
 
 const updateGameFailure = (error) => {

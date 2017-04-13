@@ -91,7 +91,7 @@ const onSignOut = function (event) {
 
 const onPlayGame = function () {
   // set view state to playable game view
-  views.playGameView()
+  views.onPlayGameView()
   // initialize game engine
   game.initGame()
   // make API call and set up handlers for callbacks
@@ -121,7 +121,7 @@ const addHandlers = () => {
   // password change handlers
   $('.nav-state').on('click', '#change-password-btn', views.onChangePasswordView)
   $('.content-state').on('submit', '#change-password', onChangePassword)
-  $('.content-state').on('click', '#change-password-cancel-btn', views.backToGame)
+  $('.content-state').on('click', '#change-password-cancel-btn', views.onStartGameView)
 
   // sign out handlers
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
