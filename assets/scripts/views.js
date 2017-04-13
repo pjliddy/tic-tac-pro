@@ -79,13 +79,13 @@ const onSignUpView = function () {
       '<fieldset>' +
         '<legend>sign up</legend>' +
         '<div class="form-group">' +
-          '<input type="email" class="form-control" name=credentials[email] id="sign-up-email" placeholder="email">' +
+          '<input type="email" class="form-control" name="credentials[email]" id="sign-up-email" placeholder="email">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name=credentials[password] id="sign-up-password" placeholder="password">' +
+          '<input type="password" class="form-control" name="credentials[password]" id="sign-up-password" placeholder="password">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name=credentials[password_confirmation] id="sign-up-password-confirm" placeholder="confirm password">' +
+          '<input type="password" class="form-control" name="credentials[password_confirmation]" id="sign-up-password-confirm" placeholder="confirm password">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
         '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
@@ -110,10 +110,10 @@ const onSignInView = function () {
       '<fieldset>' +
         '<legend>sign in</legend>' +
         '<div class="form-group">' +
-          '<input type="email" class="form-control" name=credentials[email] id="sign-in-email" placeholder="email">' +
+          '<input type="email" class="form-control" name="credentials[email]" id="sign-in-email" placeholder="email">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name=credentials[password] id="sign-in-password" placeholder="password">' +
+          '<input type="password" class="form-control" name="credentials[password]" id="sign-in-password" placeholder="password">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
         '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
@@ -162,10 +162,10 @@ const onChangePasswordView = function () {
       '<fieldset>' +
         '<legend>change password</legend>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name=passwords[old] id="change-password-old" placeholder="old password">' +
+          '<input type="password" class="form-control" name="passwords[old]" id="change-password-old" placeholder="old password">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name=passwords[new] id="change-password-new" placeholder="new password">' +
+          '<input type="password" class="form-control" name="passwords[new]" id="change-password-new" placeholder="new password">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
         '<button type="button" class="btn btn-link pull-right" id="change-password-cancel-btn">cancel</button>' +
