@@ -200,7 +200,7 @@ const onStartGameView = function () {
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
     setPrivateNav()
-    message('')
+    // message('')
     $('.content-state').html(viewState).fadeIn(150)
   })
 }

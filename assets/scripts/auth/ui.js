@@ -125,10 +125,10 @@ const getIndexSuccess = (response) => {
 
 // getIndexFailure()
 // error in response to get index API call
+// NOTE: failure of get index API calls doesn't result in any output
 
-const getIndexFailure = (error) => {
-  console.error('getIndexFailure():', error)
-  // views.message('update failed')
+const getIndexFailure = () => {
+  // console.error('getIndexFailure():')
 }
 
 module.exports = {

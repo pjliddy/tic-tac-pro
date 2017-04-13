@@ -64,12 +64,6 @@ const chooseSquare = function (evt) {
     }
   }
 
-  // TO DO: IMPROVE FLOW OF THIS CODE:
-  //  1. handle turn
-  //  2. evaluate game
-  //  3. update indexes
-  //  4. dispay result
-
   // if game is not over yet
   if (status === 0 && turn < 8) {
     // save move with API
