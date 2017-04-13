@@ -84,19 +84,32 @@ body {
 // grid border styles
 
 .border-row-center {
-  border-left: 1px solid $gray-base;
-  border-right: 1px solid $gray-base;
+  border-left: 2px solid $gray-border;
+  border-right: 2px solid $gray-border;
 }
 
 .border-col-center {
-  border-bottom: 1px solid $gray-base;
-  border-top: 1px solid $gray-base;
+  border-bottom: 2px solid $gray-border;
+  border-top: 2px solid $gray-border;
 }
 
 .border-center {
-  border: 1px solid $gray-base;
+  border: 2px solid $gray-border;
 }
 
+// form styles
+
+legend {
+  font-size: $form-title-size;
+  font-weight: $font-weight-bold;
+}
+
+.form-control {
+  font-size: $font-size-base;
+  border-color: $gray-border;
+  padding: 18px 12px;
+  font-weight: $font-weight-bold;
+}
 // button styles
 
 .btn {
@@ -104,8 +117,20 @@ body {
   font-size: $font-size-base * 1.5;
   font-weight: $font-weight-base;
 }
-.btn-default:hover {
+
+.btn-default {
+  border-color: $gray-border;
+}
+
+.btn-default:hover,
+.btn-default:focus {
   background-color: $highlight-color;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default  {
+  background-color: $highlight-color-dark;
 }
 
 .btn-lg {
@@ -125,11 +150,7 @@ body {
 
 .btn-grid {
   font-size: $font-size-base * 1.5;
-}
-// form styles
-
-.form-control {
-  font-size: $font-size-base;
+  font-weight: $font-weight-base;
 }
 
 // feedback styles

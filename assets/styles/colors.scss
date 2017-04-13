@@ -1,3 +1,20 @@
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
 $background-color-base: #fff;
-$gray-base: #888;
+
+$gray-base: #666;
+$gray-light: tint($gray-base, 40%);
+$gray-dark: shade($gray-base, 10%);
+
+$gray-border: $gray-light;
+
 $highlight-color: #7fd4ff;
+$highlight-color-light: tint($highlight-color, 10%);
+$highlight-color-dark: shade($highlight-color, 10%);

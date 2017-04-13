@@ -1,7 +1,7 @@
 'use strict'
 const api = require('./auth/api')
 const ui = require('./auth/ui')
-const store = require('./store.js')
+// const store = require('./store.js')
 
 const views = require('./views.js')
 
@@ -43,7 +43,7 @@ const chooseSquare = function (evt) {
   if (status === 0 && turn < 8) {
     turn++
     togglePlayer()
-    over = false
+    // over = false
   } else {
     // game over
     views.gameOverView()

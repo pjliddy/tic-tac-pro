@@ -2,11 +2,12 @@
 
 const store = require('../store.js')
 const views = require('../views.js')
-const game = require('../game.js')
+// const game = require('../game.js')
 
 const signUpSuccess = (data) => {
   console.log('signUpSuccess():', data)
-  views.startGameView()
+  views.message('sign up success')
+  views.onSplashScreenView()
 }
 
 const signUpFailure = (error) => {
@@ -28,8 +29,8 @@ const signInFailure = (error) => {
 
 const changePasswordSuccess = (response) => {
   console.log('changePasswordSuccess:', response)
-  views.message('password changed')
   views.backToGame()
+  views.message('password changed')
 }
 
 const changePasswordFailure = (error) => {

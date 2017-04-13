@@ -11,8 +11,10 @@ const message = function (msg) {
 const setPublicNav = function () {
   console.log('setPublicNav')
 
-  const viewState = '<button class="btn btn-default" id="sign-up-btn">sign up</button> ' +
-  '<button class="btn btn-default" id="sign-in-btn">sign in</button>'
+  const viewState = '<div class="btn-group" role="group">' +
+    '<button class="btn btn-default" id="sign-up-btn">sign up</button>' +
+    '<button class="btn btn-default" id="sign-in-btn">sign in</button>' +
+    '</div>'
 
   $('.nav-state').html(viewState)
 }
@@ -31,7 +33,7 @@ const setPrivateNav = function () {
   '<div id="navbar" class="navbar-collapse collapse">' +
     '<ul class="nav navbar-nav navbar-right">' +
       '<li class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">user@email.com <span class="caret"></span></a>' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu <span class="caret"></span></a>' +
         '<ul class="dropdown-menu" id="user-select">' +
           // '<li><a href="#" disabled>Save Game</a></li>' +
           // '<li><a href="#" id="load-game-btn">Load Game</a></li>' +
@@ -43,7 +45,7 @@ const setPrivateNav = function () {
   '</div>'
 
   $('.nav-state').html(viewState)
-  message('sign in to play')
+  message('')
 }
 
 const onSplashScreenView = function () {
@@ -62,7 +64,9 @@ const onSplashScreenView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
-  message('sign in to play')
+  message('')
+  $('#sign-in-btn').removeClass('active')
+  $('#sign-up-btn').removeClass('active')
 }
 
 const onSignUpView = function () {
@@ -88,6 +92,8 @@ const onSignUpView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
+  $('#sign-up-btn').addClass('active')
+  $('#sign-in-btn').removeClass('active')
 }
 
 const onSignInView = function () {
@@ -110,6 +116,8 @@ const onSignInView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
+  $('#sign-in-btn').addClass('active')
+  $('#sign-up-btn').removeClass('active')
 }
 
 const startGameView = function () {
