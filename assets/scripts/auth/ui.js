@@ -111,14 +111,16 @@ const getIndexSuccess = (response) => {
   // create message to user based on ones digit
   if (score === '11') {
     message = 'your ' + score + 'th game'
-  } else if (score === 1) {
+  } else if (score === '1') {
     message = 'your ' + score + 'st game'
   } else if (digit === '1') {
     message = 'your ' + digit + 'st game'
-  } if (score === '12') {
+  } else if (score === '12') {
     message = 'your ' + score + 'th game'
   } else if (digit === '2') {
     message = 'your ' + score + 'nd game'
+  } else if (score === '13') {
+    message = 'your ' + score + 'th game'
   } else if (digit === '3') {
     message = 'your ' + score + 'rd game'
   } else {
