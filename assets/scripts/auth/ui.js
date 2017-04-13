@@ -2,44 +2,57 @@
 
 const store = require('../store.js')
 const views = require('../views.js')
-// const game = require('../game.js')
+
+// signUpSuccess()
+// successful reponse to sign up API call
 
 const signUpSuccess = (data) => {
-  console.log('signUpSuccess():', data)
   views.message('sign up success')
   views.onSplashScreenView()
 }
 
-const signUpFailure = (error) => {
-  console.error('signUpFailure():', error)
+// signUpFailure()
+// error in response to sign up API call
+
+const signUpFailure = () => {
   views.message('sign up failed')
 }
 
+// signInSuccess()
+// successful reponse to sign in API call
+
 const signInSuccess = (response) => {
-  console.log('signInSuccess():', response.user)
-  // store the user object (data)
+  // store the user object returned by response
   store.user = response.user
   views.onStartGameView()
 }
 
-const signInFailure = (error) => {
-  console.error('signInFailure():', error)
+// signInFailure()
+// error in response to sign in API call
+
+const signInFailure = () => {
   views.message('sign in failed')
 }
 
-const changePasswordSuccess = (response) => {
-  console.log('changePasswordSuccess:', response)
+// changePasswordSuccess()
+// successful reponse to change password API call
+
+const changePasswordSuccess = () => {
   views.onStartGameView()
   views.message('password changed')
 }
 
-const changePasswordFailure = (error) => {
-  console.error('changePasswordFailure:', error)
+// changePasswordFailure()
+// error in response to change password API call
+
+const changePasswordFailure = () => {
   views.message('password change failed')
 }
 
-const signOutSuccess = (response) => {
-  console.log('signOutSuccess:', response)
+// signOutSuccess()
+// successful reponse to sign out API call
+
+const signOutSuccess = () => {
   views.message('signed out')
   // remove user from current session store
   store.user = null
@@ -47,51 +60,71 @@ const signOutSuccess = (response) => {
   views.onSplashScreenView()
 }
 
-const signOutFailure = (error) => {
-  console.log('signOutFailure:', error)
+// signOutFailure()
+// error in response to sign out API call
+
+const signOutFailure = () => {
   views.message('sign out failed')
 }
 
+// createGameSuccess()
+// successful reponse to create game API call
+
 const createGameSuccess = (response) => {
-  console.log('createGameSuccess():', response)
+  // store the user object returned by response
   store.game = response.game
 }
 
-const createGameFailure = (error) => {
-  console.error('createGameFailure():', error)
+// createGameFailure()
+// error in response to create game API call
+
+const createGameFailure = () => {
   views.message('couldn\'t save game')
 }
 
-const updateGameSuccess = (response) => {
-  console.log('updateGameSuccess():', response)
+// updateGameSuccess()
+// successful reponse to create game API call
+// NOTE: success or failure of update game API calls don't result in any output
+
+const updateGameSuccess = () => {
+  // console.log('updateGameSuccess():')
 }
 
-const updateGameFailure = (error) => {
-  console.error('updateGameFailure():', error)
-  // views.message('update failed')
+// updateGameFailure()
+// error in response to create game API call
+// NOTE: success or failure of update game API calls don't result in any output
+
+const updateGameFailure = () => {
+  // console.error('updateGameFailure():')
 }
+
+// getIndexSuccess()
+// successful reponse to get index API call
 
 const getIndexSuccess = (response) => {
-  console.log('getIndexSuccess():', response)
-
   let message = ''
-
-  switch (response.games.length) {
+  const score = response.games.length
+  const digit = score % 10
+  // create message to user based on ones digit
+  switch (digit) {
     case 1:
-      message = 'your 1st game'
+      message = 'your ' + score + 'st game'
       break
     case 2:
-      message = 'your 2nd game'
+      message = 'your ' + score + 'nd game'
       break
     case 3:
-      message = 'your 3rd game'
+      message = 'your ' + score + 'rd game'
       break
     default:
-      message = 'your ' + response.games.length + 'th game'
+      message = 'your ' + score + 'th game'
   }
 
   views.addMessage(message)
 }
+
+// getIndexFailure()
+// error in response to get index API call
 
 const getIndexFailure = (error) => {
   console.error('getIndexFailure():', error)
