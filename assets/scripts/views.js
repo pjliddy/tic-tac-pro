@@ -32,15 +32,13 @@ const setPrivateNav = function () {
   '</div>' +
   '<div id="navbar" class="navbar-collapse collapse">' +
     '<ul class="nav navbar-nav navbar-right">' +
-      '<li class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu <span class="caret"></span></a>' +
-        '<ul class="dropdown-menu" id="user-select">' +
-          // '<li><a href="#" disabled>Save Game</a></li>' +
-          // '<li><a href="#" id="load-game-btn">Load Game</a></li>' +
-          '<li><a href="#" id="change-password-btn">Change Password</a></li>' +
-          '<li><a href="#" id="sign-out-btn">Sign Out</a></li>' +
-        '</ul>' +
-      '</li>' +
+      // '<li class="dropdown">' +
+      //   '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu <span class="caret"></span></a>' +
+        // '<ul class="dropdown-menu" id="user-select">' +
+          '<li><a href="#" id="change-password-btn">&Delta; pwd</a></li>' +
+          '<li><a href="#" id="sign-out-btn">bye</a></li>' +
+        // '</ul>' +
+      // '</li>' +
     '</ul>' +
   '</div>'
 
@@ -137,7 +135,7 @@ const startGameView = function () {
 
   $('.content-state').html(viewState)
   setPrivateNav()
-  message('ready to play')
+  message('')
 }
 
 const onChangePasswordView = function () {

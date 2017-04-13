@@ -124,11 +124,16 @@ legend {
 
 .btn-default:hover,
 .btn-default:focus {
-  background-color: $highlight-color;
+  background-color: $highlight-color-light;
 }
+
 
 .btn-default:active,
 .btn-default.active,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.btn-default:active:hover,
+.btn-default.active:hover,
 .open .dropdown-toggle.btn-default  {
   background-color: $highlight-color-dark;
 }
@@ -149,7 +154,7 @@ legend {
 }
 
 .btn-grid {
-  font-size: $font-size-base * 1.5;
+  font-size: $font-size-base * 2;
   font-weight: $font-weight-base;
 }
 
