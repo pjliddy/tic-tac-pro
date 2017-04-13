@@ -6,7 +6,10 @@
 
     <!-- Do not add `link` tags unless you know what you are doing -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <!-- google font Work Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400" rel="stylesheet">
+
     <!-- Do not add `script` tags unless you know what you are doing -->
     <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
@@ -14,9 +17,9 @@
   <body>
     <div class="container">
 
-    <!-- nav component -->
       <nav class="navbar navbar-default">
         <div class="container-fluid nav-state">
+          <!-- nav-state view state html content -->
           <div class="btn-group" role="group">
             <button class="btn btn-default" id="sign-up-btn" onclick="this.blur();">sign up</button>
             <button class="btn btn-default" id="sign-in-btn" onclick="this.blur();">sign in</button>
@@ -24,9 +27,8 @@
         </div>
       </nav>
 
-      <!-- content component -->
       <div class="content-state">
-        <!-- default public view state -->
+        <!-- content-state view state html content -->
         <div class="grid">
           <div class="square" data-id='0'>t</div>
           <div class="square border-row-center" data-id='1'>i</div>
@@ -40,16 +42,16 @@
         </div>
       </div>
 
-      <!-- message component -->
+      <!-- message view state html content -->
       <div class="message"></div>
 
-      <!-- footer component -->
+      <!-- static footer html contnet -->
       <footer class="navbar-fixed-bottom">
         <div class="container">
           <p class="text-muted">&copy; 2017 Patrick Liddy</p>
         </div>
       </footer>
 
-    </div><!--/.container -->
+    </div>
   </body>
 </html>
