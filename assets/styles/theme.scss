@@ -25,6 +25,8 @@ body {
   border: 0;
   height: 90px;
   padding: 1em 0 0;
+  vertical-align: middle;
+
 
   h1 {
     font-size: $font-size-base * 3;
@@ -37,12 +39,9 @@ body {
   text-align: center;
 }
 
-.dropdown-menu {
+.navbar-btn {
   font-size: $font-size-base;
-
-  li > a {
-    font-weight: $font-weight-base;
-  }
+  font-weight: $font-weight-base;
 }
 
 // game layout styles

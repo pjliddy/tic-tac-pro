@@ -28,24 +28,29 @@ const setPrivateNav = function () {
   console.log('setPrivateNav')
 
   const viewState =
-  '<div class="navbar-header">' +
-    '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">' +
-      '<span class="sr-only">Toggle navigation</span>' +
-      'menu' +
-    '</button>' +
-    '<h1>tic tac toe</h1>' +
-  '</div>' +
-  '<div id="navbar" class="navbar-collapse collapse">' +
-    '<ul class="nav navbar-nav navbar-right">' +
-      // '<li class="dropdown">' +
-      //   '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu <span class="caret"></span></a>' +
-        // '<ul class="dropdown-menu" id="user-select">' +
-          '<li><a href="#" id="change-password-btn">&Delta; pwd</a></li>' +
-          '<li><a href="#" id="sign-out-btn">bye</a></li>' +
-        // '</ul>' +
-      // '</li>' +
-    '</ul>' +
-  '</div>'
+  // '<div class="navbar">' +
+    '<div class="navbar-header pull-left">' +
+      '<h1 class="navbar-brand">tic tac toe</h1>' +
+    '</div>' +
+    '<div class="navbar-header pull-right">' +
+      '<button type="button" class="btn btn-link navbar-btn" id="change-password-btn">&Delta; pwd</button>' +
+      '<button type="button" class="btn btn-link navbar-btn" id="sign-out-btn">bye</button>' +
+    '</div>'
+  // '</div>'
+
+  // '<div class="navbar-header">' +
+  //   '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">' +
+  //     '<span class="sr-only">Toggle navigation</span>' +
+  //     'menu' +
+  //   '</button>' +
+  //   '<h1>tic tac toe</h1>' +
+  // '</div>' +
+  // '<div id="navbar" class="navbar-collapse collapse">' +
+  //   '<ul class="nav navbar-nav navbar-right">' +
+  //     '<li><a href="#" id="change-password-btn">&Delta; pwd</a></li>' +
+  //     '<li><a href="#" id="sign-out-btn">bye</a></li>' +
+  //   '</ul>' +
+  // '</div>'
 
   $('.nav-state').html(viewState)
   // message('')
