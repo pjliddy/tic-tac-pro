@@ -79,27 +79,28 @@ const chooseSquare = function (evt) {
     over = true
     data.game.over = over
     views.onGameOverView()
-
-    api.updateGame(data)
-      .then(ui.updateGameSuccess)
-      .catch(ui.updateGameFailure)
-
     // disable all buttons remaining
     disableEmptySquares()
 
-    if (status !== 0) {
-      views.message('player ' + player.toUpperCase() + ' won')
-      // if player 'x' won
-      if (player === 'x') {
-        // get player's game tally from the API
-        api.getIndex(data)
-          .then(ui.getIndexSuccess)
-          .catch(ui.getIndexFailure)
-      }
-    } else {
-      // update message to player in UI
-      views.message('tie game')
-    }
+    api.updateGame(data)
+      .then(ui.updateGameSuccess)
+      // don't try to get index until update is successful
+      .then(function () {
+        if (status !== 0) {
+          views.message('player ' + player.toUpperCase() + ' won')
+          // if player 'x' won
+          if (player === 'x') {
+            // get player's game tally from the API
+            api.getIndex(data)
+              .then(ui.getIndexSuccess)
+              .catch(ui.getIndexFailure)
+          }
+        } else {
+          // update message to player in UI
+          views.message('tie game')
+        }
+      })
+      .catch(ui.updateGameFailure)
   }
 }
 
@@ -178,8 +179,8 @@ const gameStatus = function () {
 const disableEmptySquares = function () {
   // find empty values in turns[]
   for (let i = 0; i < moves.length; i++) {
+    // clear the content of squares that still have buttons
     if (moves[i] !== '') {
-      // clear the content of squares that still have buttons
       // apply jQuery cross fade to content change
       $('.play-btn[data-id]').fadeOut(100, function () {
         $('.play-btn[data-id]').closest('.square').html('').fadeIn(100)

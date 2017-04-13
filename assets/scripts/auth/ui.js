@@ -101,56 +101,8 @@ const updateGameFailure = () => {
 // getIndexSuccess()
 // successful reponse to get index API call
 
-// NOTE: this is asynchronous
-
 const getIndexSuccess = (response) => {
-  let message = ''
-  const score = response.games.length
-  const digit = score % 10
-
-  // create message to user based on ones digit
-  if (score === '11') {
-    message = 'your ' + score + 'th game'
-  } else if (score === '1') {
-    message = 'your ' + score + 'st game'
-  } else if (digit === '1') {
-    message = 'your ' + digit + 'st game'
-  } else if (score === '12') {
-    message = 'your ' + score + 'th game'
-  } else if (digit === '2') {
-    message = 'your ' + score + 'nd game'
-  } else if (score === '13') {
-    message = 'your ' + score + 'th game'
-  } else if (digit === '3') {
-    message = 'your ' + score + 'rd game'
-  } else {
-    message = 'your ' + score + 'th game'
-  }
-
-  // switch (digit) {
-  //   case 1:
-  //     if (score === 11) {
-  //       message = 'your ' + score + 'th game'
-  //       break
-  //     } else {
-  //       message = 'your ' + score + 'st game'
-  //       break
-  //     }
-  //   case 2:
-  //     if (score === 12) {
-  //       message = 'your ' + score + 'th game'
-  //       break
-  //     } else {
-  //       message = 'your ' + score + 'nd game'
-  //       break
-  //     }
-  //   case 3:
-  //     message = 'your ' + score + 'rd game'
-  //     break
-  //   default:
-  //     message = 'your ' + score + 'th game'
-  // }
-
+  const message = 'you\'ve played ' + response.games.length + ' games'
   views.addMessage(message)
 }
 
