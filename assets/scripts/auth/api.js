@@ -3,14 +3,19 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
+// signUp()
+// AJAX call to sign up API
+
 const signUp = (data) => {
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
     data
   })
 }
+
+// signIn()
+// AJAX call to sign in API
 
 const signIn = (data) => {
   return $.ajax({
@@ -19,6 +24,9 @@ const signIn = (data) => {
     data
   })
 }
+
+// changePassword()
+// AJAX call to change password API
 
 const changePassword = (data) => {
   return $.ajax({
@@ -31,6 +39,9 @@ const changePassword = (data) => {
   })
 }
 
+// signOut()
+// AJAX call to sign out API
+
 const signOut = () => {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
@@ -41,8 +52,10 @@ const signOut = () => {
   })
 }
 
+// createGame()
+// AJAX call to create game API
+
 const createGame = () => {
-  console.log('createGame()')
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'POST',
@@ -53,8 +66,10 @@ const createGame = () => {
   })
 }
 
+// updateGame()
+// AJAX call to update game API
+
 const updateGame = (data) => {
-  console.log('updateGame(): ', data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -65,8 +80,10 @@ const updateGame = (data) => {
   })
 }
 
+// getIndex()
+// AJAX call to get index API
+
 const getIndex = () => {
-  console.log('getIndex()')
   return $.ajax({
     url: config.apiOrigin + '/games?over=true',
     method: 'GET',
