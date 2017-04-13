@@ -201,9 +201,10 @@ const playGameView = function () {
     '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="8"></button></div>' +
   '</div>'
 
-  $('.content-state').html(viewState).fadeIn(150)
-
-  setPrivateNav()
+  $('.content-state').fadeOut(150, function () {
+    setPrivateNav()
+    $('.content-state').html(viewState).fadeIn(150)
+  })
 }
 
 const gameOverView = function () {
