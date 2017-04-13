@@ -82,16 +82,14 @@ const onPlayGame = function () {
 }
 
 const addHandlers = () => {
-  // using $('body') before the event handler binds the handler
+  // using $(ancestor) before the event handler binds the handler
   // to an element even if it's dynamically created later
 
   $('.content-state').on('click', '#auth-cancel-btn', views.onSplashScreenView)
 
-  // $('#sign-up-btn').on('click', views.onSignUpView)
   $('.nav-state').on('click', '#sign-up-btn', views.onSignUpView)
   $('.content-state').on('submit', '#sign-up', onSignUp)
 
-  // $('#sign-in-btn').on('click', views.onSignInView)
   $('.nav-state').on('click', '#sign-in-btn', views.onSignInView)
   $('.content-state').on('submit', '#sign-in', onSignIn)
 

@@ -32,28 +32,12 @@ const setPrivateNav = function () {
     '<div class="navbar-header pull-left">' +
       '<h1 class="navbar-brand">tic tac toe</h1>' +
     '</div>' +
-    '<div class="navbar-header pull-right">' +
+    '<div class="navbar-header pull-right navbar-right">' +
       '<button type="button" class="btn btn-link navbar-btn" id="change-password-btn">&Delta; pwd</button>' +
       '<button type="button" class="btn btn-link navbar-btn" id="sign-out-btn">bye</button>' +
     '</div>'
-  // '</div>'
-
-  // '<div class="navbar-header">' +
-  //   '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">' +
-  //     '<span class="sr-only">Toggle navigation</span>' +
-  //     'menu' +
-  //   '</button>' +
-  //   '<h1>tic tac toe</h1>' +
-  // '</div>' +
-  // '<div id="navbar" class="navbar-collapse collapse">' +
-  //   '<ul class="nav navbar-nav navbar-right">' +
-  //     '<li><a href="#" id="change-password-btn">&Delta; pwd</a></li>' +
-  //     '<li><a href="#" id="sign-out-btn">bye</a></li>' +
-  //   '</ul>' +
-  // '</div>'
 
   $('.nav-state').html(viewState)
-  // message('')
 }
 
 const onSplashScreenView = function () {
@@ -162,6 +146,8 @@ const startGameView = function () {
 }
 
 const onChangePasswordView = function () {
+  $('#game-end-confirm').modal('show')
+
   console.log('onChangePasswordView')
   event.preventDefault()
   // message('')
@@ -211,16 +197,17 @@ const playGameView = function () {
   '</div>'
 
   $('.content-state').html(viewState)
+  $('.navbar-right').fadeOut(150)
 }
 
 const gameOverView = function () {
   const viewState = '<button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button>'
 
-  // $('.border-center').fadeOut(150, function () {
-  //   $('.border-center').html(viewState).fadeIn(150)
-  // })
+  $('.border-center').fadeOut(150, function () {
+    $('.navbar-right').show()
+    $('.border-center').html(viewState).fadeIn(150)
+  })
 
-  $('.border-center').html(viewState)
   message('game over')
 }
 
