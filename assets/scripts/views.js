@@ -61,8 +61,12 @@ const onSplashScreenView = function () {
     '<div class="square">e</div>' +
   '</div>'
 
-  $('.content-state').html(viewState)
+  $('.content-state').fadeOut(150, function () {
+    $('.content-state').html(viewState).fadeIn(150)
+  })
+
   message('')
+
   $('#sign-in-btn').removeClass('active')
   $('#sign-up-btn').removeClass('active')
 }
@@ -89,7 +93,11 @@ const onSignUpView = function () {
     '</form>' +
   '</div>'
 
-  $('.content-state').html(viewState)
+  $('.content-state').fadeOut(150, function () {
+    $('.content-state').html(viewState).fadeIn(150)
+  })
+
+  // $('.content-state').html(viewState)
   $('#sign-up-btn').addClass('active')
   $('#sign-in-btn').removeClass('active')
 }
@@ -113,7 +121,10 @@ const onSignInView = function () {
     '</form>' +
   '</div>'
 
-  $('.content-state').html(viewState)
+  $('.content-state').fadeOut(150, function () {
+    $('.content-state').html(viewState).fadeIn(150)
+  })
+
   $('#sign-in-btn').addClass('active')
   $('#sign-up-btn').removeClass('active')
 }
@@ -133,9 +144,12 @@ const startGameView = function () {
     '<div class="square"></div>' +
   '</div>'
 
-  $('.content-state').html(viewState)
   setPrivateNav()
   message('')
+
+  $('.content-state').fadeOut(150, function () {
+    $('.content-state').html(viewState).fadeIn(150)
+  })
 }
 
 const onChangePasswordView = function () {
@@ -159,7 +173,9 @@ const onChangePasswordView = function () {
     '</form>' +
   '</div>'
 
-  $('.content-state').html(viewState)
+  $('.content-state').fadeOut(150, function () {
+    $('.content-state').html(viewState).fadeIn(150)
+  })
 }
 
 const backToGame = function () {
@@ -185,12 +201,17 @@ const playGameView = function () {
     '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="8"></button></div>' +
   '</div>'
 
-  $('.content-state').html(viewState)
+  $('.content-state').html(viewState).fadeIn(150)
+
   setPrivateNav()
 }
 
 const gameOverView = function () {
   const viewState = '<button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button>'
+
+  // $('.border-center').fadeOut(150, function () {
+  //   $('.border-center').html(viewState).fadeIn(150)
+  // })
 
   $('.border-center').html(viewState)
   message('game over')
