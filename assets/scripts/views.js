@@ -5,7 +5,12 @@ const initViews = function () {
 }
 
 const message = function (msg) {
-  $('.message').text(msg)
+  $('.message').html(msg)
+}
+
+const addWinMessage = function (wins) {
+  const current = $('.message').html()
+  $('.message').html(current + '<br/>' + wins + ' times')
 }
 
 const setPublicNav = function () {
@@ -79,10 +84,10 @@ const onSignUpView = function () {
       '<fieldset>' +
         '<legend>sign up</legend>' +
         '<div class="form-group">' +
-          '<input type="email" class="form-control" name="credentials[email]" id="sign-up-email" placeholder="email">' +
+          '<input type="email" class="form-control" name="credentials[email]"  id="sign-up-email" placeholder="email">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name="credentials[password]" id="sign-up-password" placeholder="password">' +
+          '<input type="password" class="form-control"  name="credentials[password]" id="sign-up-password"  placeholder="password">' +
         '</div>' +
         '<div class="form-group">' +
           '<input type="password" class="form-control" name="credentials[password_confirmation]" id="sign-up-password-confirm" placeholder="confirm password">' +
@@ -221,6 +226,7 @@ const gameOverView = function () {
 module.exports = {
   initViews,
   message,
+  addWinMessage,
   setPublicNav,
   setPrivateNav,
   onSplashScreenView,

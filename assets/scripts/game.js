@@ -40,39 +40,66 @@ const chooseSquare = function (evt) {
   console.log('chooseSquare(): status = ', status)
   let over = false
 
-  if (status === 0 && turn < 8) {
-    turn++
-    togglePlayer()
-    // over = false
-  } else {
-    // game over
-    views.gameOverView()
-    over = true
-
-    // disable all buttons remaining
-    disableEmptySquares()
-
-    if (status !== 0) {
-      views.message('player ' + player.toUpperCase() + ' wins')
-    } else {
-      views.message('tie game')
-    }
-  }
-
   const data = {
     'game': {
       'cell': {
         'index': sqNum,
         'value': player
       },
-      'over': over
+      'over': false
     }
   }
 
-  api.updateGame(data)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
+  // handle turn
 
+  // evaluate game
+
+  // update indexes
+
+  // dispay result
+
+  if (status === 0 && turn < 8) {
+    // game is not over yet
+    turn++
+    togglePlayer()
+    data.game.over = over
+
+    api.updateGame(data)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
+  } else {
+    // game over, man!
+    views.gameOverView()
+    over = true
+
+    data.game.over = over
+
+    api.updateGame(data)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
+
+    // disable all buttons remaining
+    disableEmptySquares()
+
+    if (status !== 0) {
+      views.message('player ' + player.toUpperCase() + ' wins')
+      if (player === 'x') {
+        api.getIndex(data)
+          .then(ui.getIndexSuccess)
+          .catch(ui.getIndexFailure)
+      }
+    } else {
+      views.message('tie game')
+    }
+  }
+
+  // data.over = over
+  //
+  // api.updateGame(data)
+  //   .then(ui.updateGameSuccess)
+  //   .catch(ui.updateGameFailure)
+
+  // DOES THIS NEED TO BE NULLED OR NOT?
   // store.game = null
 }
 

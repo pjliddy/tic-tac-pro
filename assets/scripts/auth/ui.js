@@ -62,13 +62,24 @@ const createGameFailure = (error) => {
   views.message('couldn\'t save game')
 }
 
-const updateGameSuccess = (data) => {
-  console.log('updateGameSuccess():', data)
+const updateGameSuccess = (response) => {
+  console.log('updateGameSuccess():', response)
   // views.startGameView()
 }
 
 const updateGameFailure = (error) => {
   console.error('updateGameFailure():', error)
+  // views.message('update failed')
+}
+
+const getIndexSuccess = (response) => {
+  console.log('getIndexSuccess():', response)
+  const wins = response.games.length
+  views.addWinMessage(wins)
+}
+
+const getIndexFailure = (error) => {
+  console.error('getIndexFailure():', error)
   // views.message('update failed')
 }
 
@@ -84,5 +95,7 @@ module.exports = {
   createGameSuccess,
   createGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  getIndexSuccess,
+  getIndexFailure
 }

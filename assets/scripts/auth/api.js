@@ -42,6 +42,7 @@ const signOut = () => {
 }
 
 const createGame = () => {
+  console.log('createGame()')
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'POST',
@@ -53,6 +54,7 @@ const createGame = () => {
 }
 
 const updateGame = (data) => {
+  console.log('updateGame(): ', data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -63,11 +65,23 @@ const updateGame = (data) => {
   })
 }
 
+const getIndex = () => {
+  console.log('getIndex()')
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   createGame,
-  updateGame
+  updateGame,
+  getIndex
 }

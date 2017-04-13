@@ -1,18 +1,7 @@
 #!/bin/bash
 
-curl  "http://localhost:4741/games" \
+curl  "http://localhost:4741/games?over=true" \
   --include \
-  --request POST \
+  --request GET \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN"\
-
-# {
-#  "game":
-#    {
-#      "id":6,
-#      "cells":["","","","","","","","",""],
-#      "over":false,
-#      "player_x":{"id":2,"email":"pjliddy@gmail.com"},
-#      "player_o":null
-#    }
-#  }
