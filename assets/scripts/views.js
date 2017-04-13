@@ -48,7 +48,7 @@ const setPrivateNav = function () {
   '</div>'
 
   $('.nav-state').html(viewState)
-  message('')
+  // message('')
 }
 
 const onSplashScreenView = function () {
@@ -70,7 +70,7 @@ const onSplashScreenView = function () {
     $('.content-state').html(viewState).fadeIn(150)
   })
 
-  message('')
+  // message('')
 
   $('#sign-in-btn').removeClass('active')
   $('#sign-up-btn').removeClass('active')
@@ -159,7 +159,7 @@ const startGameView = function () {
 const onChangePasswordView = function () {
   console.log('onChangePasswordView')
   event.preventDefault()
-  message('')
+  // message('')
 
   const viewState = '<div class="form-box">' +
     '<form id="change-password">' +
