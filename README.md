@@ -5,7 +5,7 @@
 - [Approach](#approach)
 - [Technology](#technology)
 - [Unsolved Problems](#unolved-problems)
-- [Next Steps](#next-steps)
+- [Wireframes & User Stories](#wireframes-user-stories)
 
 
 ## Project Demo
