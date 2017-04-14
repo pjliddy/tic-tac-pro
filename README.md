@@ -4,8 +4,8 @@
 - [Project Demo](#project-demo)
 - [Approach](#approach)
 - [Technology](#technology)
-- [Unsolved Problems](#unolved-problems)
-- [Wireframes & User Stories](#wireframes-user-stories)
+- [Unsolved Problems](#unsolved-problems)
+- [Wireframes and User Stories](#wireframes-and-user-stories)
 
 
 ## Project Demo
@@ -42,7 +42,7 @@ While **tic tac pro** meets the requirements for this project, there are still s
 - Creation of an basic artifical intelligence that can maximize the potential outcome of its decisions using expected value, rather than a set of conditional rules
 - Implementation a true single-page application templating system to facilitate changes to view states
 
-## Wireframes & User Stories
+## Wireframes and User Stories
 A complete set of user stories and corresponding wireframes can be [viewed here:](https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md#user-stories-and-wireframes)
   - [US 1: Public View](https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md#1-public-view)
   - [US 2: Sign Up](https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md#2-sign-up)
