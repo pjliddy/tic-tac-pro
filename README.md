@@ -1,4 +1,4 @@
-# tic tac toe
+# tic tac pro
 
 ## Table of Contents
 - [Project Demo](#project-demo)

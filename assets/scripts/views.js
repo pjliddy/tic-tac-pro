@@ -41,7 +41,7 @@ const setPublicNav = function () {
 const setPrivateNav = function () {
   const viewState =
     '<div class="navbar-header pull-left">' +
-      '<h1 class="navbar-brand">tic tac toe</h1>' +
+      '<h1 class="navbar-brand">tic tac pro</h1>' +
     '</div>' +
     '<div class="navbar-header pull-right navbar-right">' +
       '<button type="button" class="btn btn-link navbar-btn" id="change-password-btn">&Delta; pwd</button>' +
@@ -64,9 +64,9 @@ const onSplashScreenView = function () {
       '<div class="square border-col-center">t</div>' +
       '<div class="square border-center">a</div>' +
       '<div class="square border-col-center">c</div>' +
-      '<div class="square">t</div>' +
-      '<div class="square border-row-center">o</div>' +
-      '<div class="square">e</div>' +
+      '<div class="square">p</div>' +
+      '<div class="square border-row-center">r</div>' +
+      '<div class="square">o</div>' +
     '</div>'
 
   // apply jQuery cross fade to content change

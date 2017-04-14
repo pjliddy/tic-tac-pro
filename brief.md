@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# tic tac pro
 ## Project Brief
 ### Project Goals
 -   [ ] Build a web application from scratch using **js-template**
