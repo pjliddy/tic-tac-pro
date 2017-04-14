@@ -14,7 +14,7 @@
 ## Approach
 My approach to creating **tic tac pro** focused on simplicity and modularity. The application architecture leverages view states to keep the level of complexity of the game application to a minimum. The game display is be structured as four layout components that manage their own content based on which view the application is expecting. These view states are determined by the user's authentication status, the current state of game play, and any relevant user input. This structure results in simple system of components that can respond to state changes without requiring a full page load..
 
-The project plan for **tic tac pro** is available at [https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md](https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md#7-game-over)
+The project plan for **tic tac pro** is available at [https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md](https://github.com/pjliddy/tic-tac-pro/blob/master/scope.md)
 
 ## Technology
 These technologies were used to create **tic tac pro:**
