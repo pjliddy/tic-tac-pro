@@ -12,10 +12,9 @@
 // const api = require('./auth/api')
 // const ui = require('./auth/ui')
 // const view = require('./view.js')
-
-const game = require('./game.js')
-
+// const game = require('./game.js')
 const games = []
+const scores = []
 
 //  swap(array, index1, index2)
 //    utilitiy function to swap the values in two positions of an array
@@ -54,41 +53,72 @@ const heapsPermute = function (array, output, n) {
   }
 }
 
+//  getWin()
+//    checks if values of cue squares match and returns
+//    1 for 'x', -1 for 'o', 0 for a tie
+
+const checkWin = function (board) {
+  const cues = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
+
+  for (const cue of cues) {
+    // all three are the same
+    if (
+      board[cue[0]] === board[cue[1]] &&
+      board[cue[1]] === board[cue[2]] &&
+      board[cue[2]] === board[cue[0]]
+    ) {
+      // return 1 for 'x', -1 for 'o'
+      if (board[cue[0]] === 'x') {
+        return 1
+      } else if (board[cue[0]] === 'o') {
+        return -1
+      }
+    }
+  }
+  // return 0 for tie
+  return 0
+}
+
 //  getScore()
 //    Runs a game with the specified sequence of squares
-//    Returns: 1 for a win, -1 for a loss, 0 for a tie
-
-//    NOTE: should score based on number of 'O' turns;
-//    A better outcome is one in which 'O' wins in fewer turns
+//    score = 5 - 0 turns * result (+1 or -1 or 0)
 
 const getScore = function (options) {
-  // should be able to take array or string
-  if (!Array.isArray(options)) {
-    options = options.split('')
-  }
   const board = new Array(9)
-  let turns = 0
+  let turn = 0
   let result = 0
 
   for (let i = 0; i < options.length; i++) {
     const squareNum = options[i]
 
-    if (i % 2) {
-      board[squareNum] = 'o'
-    } else {
-      board[squareNum] = 'x'
-    }
-    if (i > 4 && result === 0) {
-      // result = this.checkWin()
-      // result = game.gameStatus()
+    board[squareNum] = (i % 2) ? 'o' : 'x'
+    // if (i % 2) {
+    //   board[squareNum] = 'o'
+    // } else {
+    //   board[squareNum] = 'x'
+    // }
 
-      // FIND OUT IF THEY WIN here
-      // for temp return count
-      turns = i
-      result = i
+    // only check if at least one player has moved 3 times
+    // and a winner hasn't been found yet
+    if (i >= 5 && result === 0) {
+      result = checkWin(board)
+      turn = i
     }
   }
-  return {'uid': options.join(''), 'turns': turns, 'score': result}
+
+  return {
+    'turn': turn,
+    'score': (5 - Math.round(turn / 2)) * result
+  }
 }
 
 // initAi()
@@ -101,6 +131,7 @@ const initAi = function () {
   const options = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   // initialize games array
   this.games = []
+  this.scores = []
   // store this in a reference for iteration of array
   const that = this
 
@@ -120,20 +151,36 @@ const initAi = function () {
   // IF GAME TAKES FEWER THAN 9 TURNS, REMOVE ANY TURNS FROM GAME ARRAY THAT
   // BEGIN WITH THE TURN LIST AS A FILTER MASK
 
-  debugger
-
   for (let i = 0; i < this.games.length; i++) {
-  // this.games.forEach(function (uid) {
-    const gameData = getScore(this.games[i])
-    that.games[i] = gameData
+    const scoreData = getScore(this.games[i])
+    let uid = that.games[i]
 
-    if (i % 10000 === 0) {
-      console.log(gameData.uid, gameData.score)
+    if (scoreData.turn < 8) {
+      // delete any others with this mask
+      const mask = uid.slice(0, scoreData.turn + 1)
+      // get guids that begin with this mask
+
+      // skip over any other uids that start with the mask
+      if (uid.startsWith(mask)) {
+        i++
+      }
+
+      uid = mask
     }
+
+    that.scores.push({
+      [uid]: scoreData.score
+    })
+
+    // if (i % 10000 === 0) {
+    //   console.log(uid, scoreData.score)
+    // }
   }
 
-  // console.log(`${that.games.length} games`)
-  return ((Date.now() - startTime) / 1000 + ' sec')
+  const initTime = (Date.now() - startTime) / 1000 + ' sec'
+  console.log(`Unique Combinations: ${that.scores.length} - ${initTime}`)
+
+  return initTime
 }
 
 module.exports = {
