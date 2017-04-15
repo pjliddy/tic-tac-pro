@@ -191,5 +191,6 @@ const disableEmptySquares = function () {
 
 module.exports = {
   initGame,
-  chooseSquare
+  chooseSquare,
+  gameStatus
 }

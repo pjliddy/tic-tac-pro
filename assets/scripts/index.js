@@ -15,11 +15,15 @@ require('./example')
 
 const authEvents = require('./auth/events.js')
 const view = require('./view.js')
+const ai = require('./ai.js')
 
 // On document ready
 $(() => {
   authEvents.addHandlers()
   // initialize application view states
-  ai.initAi()
   view.initView()
+
+  // since this command may take a second or more, it should be run with
+  // a callback function so the UI doesn't hang while AI is initializing
+  ai.initAi()
 })
