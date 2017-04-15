@@ -14,11 +14,12 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
-const views = require('./views.js')
+const view = require('./view.js')
 
 // On document ready
 $(() => {
   authEvents.addHandlers()
   // initialize application view states
-  views.initViews()
+  ai.initAi()
+  view.initView()
 })

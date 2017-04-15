@@ -1,9 +1,9 @@
 'use strict'
 
-// initViews()
-// initialize views if needed
+// initView()
+// initialize view if needed
 
-const initViews = function () {
+const initView = function () {
   // TO DO: should load view states into empty containers on index.html on app init
 }
 
@@ -240,7 +240,7 @@ const onGameOverView = function () {
 }
 
 module.exports = {
-  initViews,
+  initView,
   message,
   addMessage,
   setPublicNav,

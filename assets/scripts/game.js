@@ -1,7 +1,7 @@
 'use strict'
 const api = require('./auth/api')
 const ui = require('./auth/ui')
-const views = require('./views.js')
+const view = require('./view.js')
 
 // map unicode chars with better shapes for X and O
 const xChar = '\u2715'
@@ -32,7 +32,7 @@ const initGame = function () {
   moves.fill('')
   turn = 0
   player = 'x'
-  views.message('player ' + player + '\'s turn')
+  view.message('player ' + player + '\'s turn')
 }
 
 // chooseSquare()
@@ -78,7 +78,7 @@ const chooseSquare = function (evt) {
     // game over, man!
     over = true
     data.game.over = over
-    views.onGameOverView()
+    view.onGameOverView()
     // disable all buttons remaining
     disableEmptySquares()
 
@@ -87,7 +87,7 @@ const chooseSquare = function (evt) {
       // don't try to get index until update is successful
       .then(function () {
         if (status !== 0) {
-          views.message('player ' + player.toUpperCase() + ' won')
+          view.message('player ' + player.toUpperCase() + ' won')
           // if player 'x' won
           if (player === 'x') {
             // get player's game tally from the API
@@ -97,7 +97,7 @@ const chooseSquare = function (evt) {
           }
         } else {
           // update message to player in UI
-          views.message('tie game')
+          view.message('tie game')
         }
       })
       .catch(ui.updateGameFailure)
@@ -133,7 +133,7 @@ const togglePlayer = function () {
     player = 'x'
   }
   // update message to player in UI
-  views.message('player ' + player.toUpperCase() + '\'s turn')
+  view.message('player ' + player.toUpperCase() + '\'s turn')
 }
 
 // checkCue()

@@ -1,21 +1,21 @@
 'use strict'
 
 const store = require('../store.js')
-const views = require('../views.js')
+const view = require('../view.js')
 
 // signUpSuccess()
 // successful reponse to sign up API call
 
 const signUpSuccess = (data) => {
-  views.message('sign up success')
-  views.onSplashScreenView()
+  view.message('sign up success')
+  view.onSplashScreenView()
 }
 
 // signUpFailure()
 // error in response to sign up API call
 
 const signUpFailure = () => {
-  views.message('sign up failed')
+  view.message('sign up failed')
 }
 
 // signInSuccess()
@@ -24,47 +24,47 @@ const signUpFailure = () => {
 const signInSuccess = (response) => {
   // store the user object returned by response
   store.user = response.user
-  views.onStartGameView()
+  view.onStartGameView()
 }
 
 // signInFailure()
 // error in response to sign in API call
 
 const signInFailure = () => {
-  views.message('sign in failed')
+  view.message('sign in failed')
 }
 
 // changePasswordSuccess()
 // successful reponse to change password API call
 
 const changePasswordSuccess = () => {
-  views.onStartGameView()
-  views.message('password changed')
+  view.onStartGameView()
+  view.message('password changed')
 }
 
 // changePasswordFailure()
 // error in response to change password API call
 
 const changePasswordFailure = () => {
-  views.message('password change failed')
+  view.message('password change failed')
 }
 
 // signOutSuccess()
 // successful reponse to sign out API call
 
 const signOutSuccess = () => {
-  views.message('signed out')
+  view.message('signed out')
   // remove user from current session store
   store.user = null
-  views.setPublicNav()
-  views.onSplashScreenView()
+  view.setPublicNav()
+  view.onSplashScreenView()
 }
 
 // signOutFailure()
 // error in response to sign out API call
 
 const signOutFailure = () => {
-  views.message('sign out failed')
+  view.message('sign out failed')
 }
 
 // createGameSuccess()
@@ -79,7 +79,7 @@ const createGameSuccess = (response) => {
 // error in response to create game API call
 
 const createGameFailure = () => {
-  views.message('couldn\'t save game')
+  view.message('couldn\'t save game')
 }
 
 // updateGameSuccess()
@@ -103,7 +103,7 @@ const updateGameFailure = () => {
 
 const getIndexSuccess = (response) => {
   const message = 'you\'ve played ' + response.games.length + ' games'
-  views.addMessage(message)
+  view.addMessage(message)
 }
 
 // getIndexFailure()

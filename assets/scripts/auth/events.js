@@ -1,7 +1,7 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-const views = require('./../views.js')
+const view = require('./../view.js')
 const game = require('./../game.js')
 
 const api = require('./api')
@@ -17,13 +17,13 @@ const onSignUp = function (event) {
   event.preventDefault()
   // validate user input
   if (data.credentials.email.length === 0) {
-    views.message('email required')
+    view.message('email required')
   } else if (data.credentials.password.length === 0) {
-    views.message('password required')
+    view.message('password required')
   } else if (!data.credentials.password_confirmation.length === 0) {
-    views.message('password confirmation required')
+    view.message('password confirmation required')
   } else if (data.credentials.password !== data.credentials.password_confirmation) {
-    views.message('passwords must match')
+    view.message('passwords must match')
   } else {
     // make API call and set up handlers for callbacks
     api.signUp(data)
@@ -42,9 +42,9 @@ const onSignIn = function (event) {
   event.preventDefault()
   // validate user input
   if (!data.credentials.email) {
-    views.message('email required')
+    view.message('email required')
   } else if (!data.credentials.password) {
-    views.message('password required')
+    view.message('password required')
   } else {
     // make API call and set up handlers for callbacks
     api.signIn(data)
@@ -63,9 +63,9 @@ const onChangePassword = function (event) {
   event.preventDefault()
   // validate user input
   if (!data.passwords.old) {
-    views.message('old password required')
+    view.message('old password required')
   } else if (!data.passwords.new.length) {
-    views.message('new password required')
+    view.message('new password required')
   } else {
     // make API call and set up handlers for callbacks
     api.changePassword(data)
@@ -91,7 +91,7 @@ const onSignOut = function (event) {
 
 const onPlayGame = function () {
   // set view state to playable game view
-  views.onPlayGameView()
+  view.onPlayGameView()
   // initialize game engine
   game.initGame()
   // make API call and set up handlers for callbacks
@@ -108,20 +108,20 @@ const addHandlers = () => {
   // to an element even if it's dynamically created later
 
   // sign up handlers
-  $('.nav-state').on('click', '#sign-up-btn', views.onSignUpView)
+  $('.nav-state').on('click', '#sign-up-btn', view.onSignUpView)
   $('.content-state').on('submit', '#sign-up', onSignUp)
 
   // sign in handlers
-  $('.nav-state').on('click', '#sign-in-btn', views.onSignInView)
+  $('.nav-state').on('click', '#sign-in-btn', view.onSignInView)
   $('.content-state').on('submit', '#sign-in', onSignIn)
 
   // cancel link handler (used in sign up and sign in forms)
-  $('.content-state').on('click', '#auth-cancel-btn', views.onSplashScreenView)
+  $('.content-state').on('click', '#auth-cancel-btn', view.onSplashScreenView)
 
   // password change handlers
-  $('.nav-state').on('click', '#change-password-btn', views.onChangePasswordView)
+  $('.nav-state').on('click', '#change-password-btn', view.onChangePasswordView)
   $('.content-state').on('submit', '#change-password', onChangePassword)
-  $('.content-state').on('click', '#change-password-cancel-btn', views.onStartGameView)
+  $('.content-state').on('click', '#change-password-cancel-btn', view.onStartGameView)
 
   // sign out handlers
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
