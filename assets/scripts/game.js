@@ -2,6 +2,7 @@
 const api = require('./auth/api')
 const ui = require('./auth/ui')
 const view = require('./view.js')
+const ai = require('./ai.js')
 
 // map unicode chars with better shapes for X and O
 const xChar = '\u2715'
@@ -12,6 +13,9 @@ const moves = new Array(9)
 let turn = 0
 let player = 'x'
 let over = false
+// define AI variables
+let turns = new Array(0)
+let options = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 // define "cues" to check for win state
 const cues = [
@@ -32,6 +36,11 @@ const initGame = function () {
   moves.fill('')
   turn = 0
   player = 'x'
+
+  // AI variables
+  turns = []
+  options = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
   view.message('player ' + player + '\'s turn')
 }
 
@@ -41,6 +50,11 @@ const initGame = function () {
 const chooseSquare = function (evt) {
   // get which square the player clicked on
   const sqNum = $(this).data('id')
+  // add sqNum to turns for AI
+  turns.push(sqNum)
+  const index = options.indexOf(sqNum)
+  options.splice(index, 1)
+
   // store the move in the moves array
   moves[sqNum] = player.toLowerCase()
   // update game and UI
@@ -74,6 +88,12 @@ const chooseSquare = function (evt) {
     // update turn and player
     turn++
     togglePlayer()
+
+    if (player === 'o') {
+      // get ai's choice of best next move
+      const choice = ai.decide(turns.join(''))
+      console.log(`AI square: ${choice}`)
+    }
   } else {
     // game over, man!
     over = true
