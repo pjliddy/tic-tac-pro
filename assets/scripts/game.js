@@ -89,11 +89,21 @@ const chooseSquare = function (evt) {
     turn++
     togglePlayer()
 
-    if (player === 'o') {
-      // get ai's choice of best next move
-      const choice = ai.decide(turns.join(''))
-      console.log(`AI square: ${choice}`)
+    if (turns.length >= 3) {
+      // if (player === 'o') {
+        // get ai's choice of best next move
+      // timer to test performance
+      const startTime = Date.now()
+      console.log(`thinking...`)
+
+      const decideObj = ai.decide(turns.join(''))
+
+      const endTime = (Date.now() - startTime) / 1000 + ' sec'
+      console.log(`duration: ${endTime}`)
+
+      console.log(`MOVE: ${decideObj.uid.slice(-1)} | score: ${decideObj.score}`)
     }
+    // }
   } else {
     // game over, man!
     over = true
