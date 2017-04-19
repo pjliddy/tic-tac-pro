@@ -26,12 +26,7 @@ const addMessage = function (msg) {
 // sets the html content of the nav-state component for unauthenticated users
 
 const setPublicNav = function () {
-  const viewState =
-    '<div class="btn-group" role="group">' +
-      '<button class="btn btn-default" id="sign-up-btn">sign up</button>' +
-      '<button class="btn btn-default" id="sign-in-btn">sign in</button>' +
-    '</div>'
-
+  const viewState = require('./views/nav-public.js').content
   $('.nav-state').html(viewState)
 }
 
@@ -39,15 +34,7 @@ const setPublicNav = function () {
 // sets the html content of the nav-state component for authenticated users
 
 const setPrivateNav = function () {
-  const viewState =
-    '<div class="navbar-header pull-left">' +
-      '<h1 class="navbar-brand">tic tac pro</h1>' +
-    '</div>' +
-    '<div class="navbar-header pull-right navbar-right">' +
-      '<button type="button" class="btn btn-link navbar-btn" id="change-password-btn">&Delta; pwd</button>' +
-      '<button type="button" class="btn btn-link navbar-btn" id="sign-out-btn">bye</button>' +
-    '</div>'
-
+  const viewState = require('./views/nav-private.js').content
   $('.nav-state').html(viewState)
 }
 
@@ -56,18 +43,7 @@ const setPrivateNav = function () {
 // screen for unauthenticated users
 
 const onSplashScreenView = function () {
-  const viewState =
-    '<div class="grid">' +
-      '<div class="square">t</div>' +
-      '<div class="square border-row-center">i</div>' +
-      '<div class="square">c</div>' +
-      '<div class="square border-col-center">t</div>' +
-      '<div class="square border-center">a</div>' +
-      '<div class="square border-col-center">c</div>' +
-      '<div class="square">p</div>' +
-      '<div class="square border-row-center">r</div>' +
-      '<div class="square">o</div>' +
-    '</div>'
+  const viewState = require('./views/content-splash.js').content
 
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
@@ -83,25 +59,7 @@ const onSplashScreenView = function () {
 // sets the html content of the content-state component to the sign up form
 
 const onSignUpView = function () {
-  const viewState =
-    '<div class="form-box">' +
-      '<form id="sign-up">' +
-        '<fieldset>' +
-          '<legend>sign up</legend>' +
-          '<div class="form-group">' +
-            '<input type="email" class="form-control" name="credentials[email]"  id="sign-up-email" placeholder="email">' +
-          '</div>' +
-          '<div class="form-group">' +
-            '<input type="password" class="form-control"  name="credentials[password]" id="sign-up-password"  placeholder="password">' +
-          '</div>' +
-          '<div class="form-group">' +
-            '<input type="password" class="form-control" name="credentials[password_confirmation]" id="sign-up-password-confirm" placeholder="confirm password">' +
-          '</div>' +
-          '<button type="submit" class="btn btn-default pull-right">submit</button>' +
-          '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
-        '</fieldset>' +
-      '</form>' +
-    '</div>'
+  const viewState = require('./views/content-sign-up.js').content
 
   message('')
 
@@ -121,22 +79,7 @@ const onSignUpView = function () {
 // sets the html content of the content-state component to the sign in form
 
 const onSignInView = function () {
-  const viewState =
-    '<div class="form-box">' +
-      '<form id="sign-in">' +
-        '<fieldset>' +
-          '<legend>sign in</legend>' +
-          '<div class="form-group">' +
-            '<input type="email" class="form-control" name="credentials[email]" id="sign-in-email" placeholder="email">' +
-          '</div>' +
-          '<div class="form-group">' +
-            '<input type="password" class="form-control" name="credentials[password]" id="sign-in-password" placeholder="password">' +
-          '</div>' +
-          '<button type="submit" class="btn btn-default pull-right">submit</button>' +
-          '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
-        '</fieldset>' +
-      '</form>' +
-    '</div>'
+  const viewState = require('./views/content-sign-in.js').content
 
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
@@ -155,24 +98,9 @@ const onSignInView = function () {
 // change password form
 
 const onChangePasswordView = function () {
+  const viewState = require('./views/content-change-password.js').content
   // prevent default form post
   event.preventDefault()
-  const viewState =
-    '<div class="form-box">' +
-      '<form id="change-password">' +
-        '<fieldset>' +
-          '<legend>change password</legend>' +
-          '<div class="form-group">' +
-            '<input type="password" class="form-control" name="passwords[old]" id="change-password-old" placeholder="old password">' +
-          '</div>' +
-          '<div class="form-group">' +
-            '<input type="password" class="form-control" name="passwords[new]" id="change-password-new" placeholder="new password">' +
-          '</div>' +
-          '<button type="submit" class="btn btn-default pull-right">submit</button>' +
-          '<button type="button" class="btn btn-link pull-right" id="change-password-cancel-btn">cancel</button>' +
-        '</fieldset>' +
-      '</form>' +
-    '</div>'
 
   message('')
 
@@ -186,20 +114,7 @@ const onChangePasswordView = function () {
 // sets the html content of the content-state component to the start game view
 
 const onStartGameView = function () {
-  const viewState =
-    '<div class="grid">' +
-      '<div class="square"></div>' +
-      '<div class="square border-row-center"></div>' +
-      '<div class="square"></div>' +
-      '<div class="square border-col-center"></div>' +
-      '<div class="square border-center">' +
-        '<button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button>' +
-      '</div>' +
-      '<div class="square border-col-center"></div>' +
-      '<div class="square"></div>' +
-      '<div class="square border-row-center"></div>' +
-      '<div class="square"></div>' +
-    '</div>'
+  const viewState = require('./views/content-start-game.js').content
 
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
@@ -213,18 +128,7 @@ const onStartGameView = function () {
 // sets the html content of the content-state component to the play game viw
 
 const onPlayGameView = function () {
-  const viewState =
-    '<div class="grid">' +
-      '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="0"></button></div>' +
-      '<div class="square border-row-center"><button class="btn btn-lg btn-default play-btn" data-id="1"></button></div>' +
-      '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="2"></button></div>' +
-      '<div class="square border-col-center"><button class="btn btn-lg btn-default play-btn" data-id="3"></button></div>' +
-      '<div class="square border-center"><button class="btn btn-lg btn-default play-btn" data-id="4"></button></div>' +
-      '<div class="square border-col-center"><button class="btn btn-lg btn-default play-btn" data-id="5"></button></div>' +
-      '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="6"></button></div>' +
-      '<div class="square border-row-center"><button class="btn btn-lg btn-default play-btn" data-id="7"></button></div>' +
-      '<div class="square"><button class="btn btn-lg btn-default play-btn" data-id="8"></button></div>' +
-    '</div>'
+  const viewState = require('./views/content-play-game.js').content
 
   $('.content-state').html(viewState)
   // apply jQuery fade to content change
