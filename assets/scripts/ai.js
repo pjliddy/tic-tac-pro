@@ -9,6 +9,7 @@
 */
 
 let scores = []
+let games = []
 
 //  swap(array, index1, index2)
 //    utilitiy function to swap the values in two positions of an array
@@ -82,49 +83,80 @@ const checkWin = function (board) {
   return 0
 }
 
+// getOptions(mask)
+//  returns an array of available squares not used by mask
+
+const getOptions = function (mask) {
+  const options = []
+  for (let i = 0; i < 9; i++) {
+    if (mask.indexOf(i) === -1) {
+      options.push(i)
+    }
+  }
+  return options
+}
+
+// findScore(mask)
+//  returns a score object that exactly matches mask or undefined
+
+const findScore = function (mask) {
+  const result = scores.find(
+    (element) => element.uid === mask
+  )
+  return result
+}
+
 //  scoreGame()
 //    Runs a game with the specified sequence of squares
 //    score = 5 - number of turns 'o' has taken * checkWin() (+1 or -1 or 0)
 
 const scoreGame = function (options) {
+  // if (options.startsWith('0123456')) {
+  //   debugger
+  // }
+
   const board = new Array(9)
-  let turn = 0
+  let turn = 1
   let result = 0
 
   for (let i = 0; i < options.length; i++) {
     const squareNum = options[i]
-
     board[squareNum] = (i % 2) ? 'o' : 'x'
-    // if (i % 2) {
-    //   board[squareNum] = 'o'
-    // } else {
-    //   board[squareNum] = 'x'
-    // }
 
     // only check if at least one player has moved 3 times
     // and a winner hasn't been found yet
-    if (i >= 5 && result === 0) {
+    if (i >= 4 && result === 0) {
       result = checkWin(board)
-      turn = i
+      turn = i + 1
+      if (result) {
+        break
+      }
     }
   }
 
   return {
     'turn': turn,
-    'score': (5 - Math.round(turn / 2)) * result
+    'score': 5 - Math.trunc(turn / 2) * result
   }
+}
+
+const unMaskGamesList = function (mask) {
+  games.filter(
+    (element) => !element.startsWith(mask)
+  )
 }
 
 // initAi()
 //  initialize the game AI
 
 const initAi = function () {
+  const temp = []
   // timer to test performance
   const startTime = Date.now()
   // array of possible move options
   const options = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   // initialize games array
-  const games = []
+  games = []
   // initialize scores array
   scores = []
   // store this in a reference for iteration of array
@@ -137,6 +169,7 @@ const initAi = function () {
   // sort uids in ascending order to facilitate filtering out
   // games that end in less than 9 moves
   games.sort()
+  games.reverse()
 
   // create a score data object for each possible permutation of moves
   //  {
@@ -144,9 +177,16 @@ const initAi = function () {
   //    'score': [-2, -1, 0, 1, or 2]
   //  }
 
-  for (let i = 0; i < games.length; i++) {
-    const scoreData = scoreGame(games[i])
-    let uid = games[i]
+  // const numGames = games.length
+  // console.log(games.length)
+  while (games.length > 0) {
+    // pull last (lowest) uid off of list
+    let uid = games.pop()
+    const scoreData = scoreGame(uid)
+
+    // if (uid.startsWith('03142')) {
+    //   debugger
+    // }
 
     // if the game takes less than 9 turns
     if (scoreData.turn < 8) {
@@ -158,24 +198,25 @@ const initAi = function () {
       // NOTE: writes multiple; needs optimization
 
       uid = mask
+      while (games[games.length - 1].startsWith(mask)) {
+        games.pop()
+      }
     }
 
     // game is over
     // store a score object for each terminal state permutation
     // if there's one already, don't push
 
-    scores.push({
-      'uid': uid,
-      'score': scoreData.score
-    })
-
-    // if (uid.startsWith('031462')) {
-    //   console.log(`uid:  ${uid} = ${scoreData.score}`)
-    // }
+    if (findScore(uid) === undefined) {
+      scores.push({
+        'uid': uid,
+        'score': scoreData.score
+      })
+    }
   }
 
   const initTime = (Date.now() - startTime) / 1000 + ' sec'
-  console.log(`Unique Combinations: ${scores.length} - ${initTime}`)
+  console.log(`Init AI w/${scores.length} scores - ${initTime}`)
 
   return initTime
 }
@@ -203,28 +244,10 @@ const getMax = function (array) {
   return result
 }
 
-const getOptions = function (mask) {
-  const options = []
-  for (let i = 0; i < 9; i++) {
-    if (mask.indexOf(i) === -1) {
-      options.push(i)
-    }
-  }
-  return options
-}
-
-// findScore(mask)
-//  returns a score object that exactly matches mask or undefined
-
-const findScore = function (mask) {
-  const result = scores.find(
-    (element) => element.uid === mask
-  )
-  return result
-}
+// decide(mask)
+//  makes best choice for player
 
 const decide = function (mask) {
-
   // options can be derived from mask & don't need to be passed in
   const options = getOptions(mask)
   let isAi // don't need both
@@ -237,23 +260,20 @@ const decide = function (mask) {
     // console.log(`return ${scoreObj.uid}: ${scoreObj.score}`)
     return scoreObj
   } else {  // else calculate minmax
+    // create empty scoreObj
     scoreObj = {}
     // determine player for next turn with this mask
     if ((mask.length + 1) % 2) {
-      // player turn = max
-      // player = 'x'
+      // player = 'x'; player turn = max
       isAi = false
       // initialize max score
       scoreObj.score = -10
     } else {
-      // ai turn = min
-      // player = 'o'
+      // player = 'o'; ai turn = min
       isAi = true
       // initialize min score
       scoreObj.score = 10
     }
-
-    // debugger
 
     // iterate through options
     options.forEach(function (option) {
@@ -268,11 +288,17 @@ const decide = function (mask) {
         // min: if next score is less than stored score, replace it
         if (nextScoreObj.score < scoreObj.score) {
           // if next score is less than stored score, replace it
+          // if (nextScoreObj.uid.startsWith('0314')) {
+          //   debugger
+          // }
           scoreObj = nextScoreObj
         }
       } else {
         // max: if next score is greater than than stored score, replace it
         if (nextScoreObj.score > scoreObj.score) {
+          // if (nextScoreObj.uid.startsWith('0314')) {
+          //   debugger
+          // }
           scoreObj = nextScoreObj
         }
       }
@@ -285,141 +311,6 @@ const decide = function (mask) {
 
   return scoreObj
 }
-
-  // declare minmax flag (make boolean isMin?)
-  // let isMin = true
-  //
-  // // min' for ai, 'max' for player
-  // if ((mask.length + 1) % 2) {
-  //   // player turn
-  //   isMin = false
-  // } else {
-  //   // ai turn
-  //   isMin = true
-  // }
-
-  // if (options.length === 2) {
-  // let minmax
-  // let role
-
-  // get all games that start with mask
-  // const scores = findScoreObjs(mask)
-  //
-  // if (mask.length % 2 === 0) {
-  //   minmax = getMax(scores)
-  //   role = 'player'
-  // } else {
-  //   minmax = getMin(scores)
-  //   role = 'ai'
-  // }
-  // // get last digit of best move
-  // choice = minmax.uid.slice(-1)
-  //
-  // console.log(`${role} choice: ${choice}`)
-  // // }
-  //
-  // return choice
-
-  // const thisScore = findScore(mask)
-  // // does this mask result in a terminal state?
-  // if (thisScore !== undefined) {
-  //   // the game doesn't pass in a winning mask.
-  //   // but be passed in recursively
-  //   // there is a score for this mask, so its a winner
-  //   console.log(`${mask}: ${thisScore}`)
-  //   return thisScore
-  // } else {
-    // there is no score for this mask; keep processing
-
-    // if (options.length > 2) {
-    //   // mask isn't a winner, so...
-    //   // options.length is three or more, so parse and keep iterating
-    //   // iterate thorugh options
-    //   for (const option of options) {
-    //     // pull each choice in option and add to mask
-    //     const testMask = mask + option
-    //     // make copy of options array
-    //     const testOptions = options.slice()
-    //     // remove test option
-    //     testOptions.splice(testOptions.indexOf(option), 1)
-    //     // pass options and test mask back into decide(array, choice)
-    //     const choice = decide(testOptions, testMask)
-    //     // temp outcome
-    //     console.log(choice)
-    //   }
-    // } else if (options.length === 2) {
-  // if (options.length === 2) {
-  //   debugger
-  //
-  //   const choice = getMin(a,b)
-  //   return choice
-    // const mask0 = mask + options[0]
-    // const mask1 = mask + options[1]
-    // const mask0a = mask + options[0] + options[1]
-    // const mask1a = mask + options[1] + options[0]
-    // // can return multiple scores
-    // const score0 = findScore(mask0)
-    // const score1 = findScore(mask1)
-    // const score0a = findScore(mask0a)
-    // const score1a = findScore(mask1a)
-    // // get minmax of the scores for those two
-    // console.log(`${mask0}: ${score0} | ${mask0a}: ${score0a}`)
-    // console.log(`${mask1}: ${score1} | ${mask1a}: ${score1a}`)
-  // }
-    // } else if (options.length === 1) {
-    //   // check mask (8 digit) and return score if there is one
-    //   let score = findScore(options, mask)
-    //   console.log(`${mask}: ${score}`)
-    //   // or else add last digit and return score
-    //   const testMask = mask + options[0]
-    //   score = findScore(options.shift(), testMask)
-    //   // return score
-    //   console.log(`${testMask}: ${score}`)
-    // }
-  // }
-
-  // console.log(`decide(${minmax} : ${options} : ${mask}) => ${choice}`)
-
-  // for (choice in options) {
-  //
-  // }
-  // const numOptions = options.length
-
-  // which option is the best (minimax?)
-
-  // if one option, return scoreObjs
-
-  // if two options, return minMax of value with better score
-
-  // if three or more options, run call decide on options
-
-  // how many objects? lots
-  // let scoreObjs = scores.filter(function( obj ) {
-  //   return obj.id.startsWith(mask)
-  // })
-
-  // no score unless only one value in options
-  // let score = scoreObj.score
-
-  // get smallest number (should always come back 0?)
-
-  // const choice = options.reduce(function (options, move) {
-
-    // handles math, now needs to get score first (may need to split and call self again)
-
-    // if there's a score for this mask, return it
-
-    // or else... take each one out and reduce it
-
-  //   return Math.min(options, move)
-  // }, options[0])
-
-  // take each value in array determine its value by passing rest of array
-
-  // const choice = options.reduce(options,
-  //   (a, e, i, array) => a.findScore() < e.findScore() ? a : e,
-  //   min
-  // )
 
 module.exports = {
   initAi,
