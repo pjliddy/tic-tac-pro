@@ -27,7 +27,7 @@ const onSignUp = function (event) {
   } else {
     // make API call and set up handlers for callbacks
     api.signUp(data)
-      .then(ui.signUpSuccess)
+      .then(onCompleteSignIn(data))
       .catch(ui.signUpFailure)
   }
 }
@@ -40,6 +40,27 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
+  // validate user input
+  if (!data.credentials.email) {
+    views.message('email required')
+  } else if (!data.credentials.password) {
+    views.message('password required')
+  } else {
+    // make API call and set up handlers for callbacks
+    api.signIn(data)
+      .then(ui.signInSuccess)
+      .catch(ui.signInFailure)
+  }
+}
+
+// onCompleteSignIn()
+// handle form submission for user sign in as part of sign up
+
+const onCompleteSignIn = function (data) {
+  // get data object from user sign in form
+  // const data = getFormFields(this)
+  // prevent default form post
+  // event.preventDefault()
   // validate user input
   if (!data.credentials.email) {
     views.message('email required')

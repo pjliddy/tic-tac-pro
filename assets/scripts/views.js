@@ -103,6 +103,8 @@ const onSignUpView = function () {
       '</form>' +
     '</div>'
 
+  message('')
+
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
     $('.content-state').html(viewState).fadeIn(150)
@@ -140,7 +142,7 @@ const onSignInView = function () {
   $('.content-state').fadeOut(150, function () {
     $('.content-state').html(viewState).fadeIn(150)
   })
-
+  message('')
   // set active states for navbar buttons when selected
   // TO DO: use Bootstrap's native radio button functionality to
   // automatically set states of buttons in group
@@ -171,6 +173,8 @@ const onChangePasswordView = function () {
         '</fieldset>' +
       '</form>' +
     '</div>'
+
+  message('')
 
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
