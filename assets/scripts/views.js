@@ -51,8 +51,7 @@ const onSplashScreenView = function () {
   })
 
   // reset buttons in navbar
-  $('#sign-in-btn').removeClass('active')
-  $('#sign-up-btn').removeClass('active')
+  $('.nav-state .btn-group .btn').removeClass('active')
 }
 
 // onSignUpView()
@@ -71,8 +70,13 @@ const onSignUpView = function () {
   // set active states for navbar buttons when selected
   // TO DO: use Bootstrap's native radio button functionality to
   // automatically set states of buttons in group
-  $('#sign-up-btn').addClass('active')
-  $('#sign-in-btn').removeClass('active')
+  // $('#sign-up-btn').addClass('active')
+  // $('#sign-in-btn').removeClass('active')
+
+  $('.nav-state .btn-group .btn').click(function () {
+    $('.nav-state .btn-group .btn').removeClass('active')
+    $(this).addClass('active')
+  })
 }
 
 // onSignInView()
@@ -89,8 +93,13 @@ const onSignInView = function () {
   // set active states for navbar buttons when selected
   // TO DO: use Bootstrap's native radio button functionality to
   // automatically set states of buttons in group
-  $('#sign-in-btn').addClass('active')
-  $('#sign-up-btn').removeClass('active')
+  // $('#sign-in-btn').addClass('active')
+  // $('#sign-up-btn').removeClass('active')
+
+  $('.nav-state .btn-group .btn').click(function () {
+    $('.nav-state .btn-group .btn').removeClass('active')
+    $(this).addClass('active')
+  })
 }
 
 // onChangePasswordView()

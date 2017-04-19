@@ -6,13 +6,13 @@ const content =
       '<fieldset>' +
         '<legend>sign up</legend>' +
         '<div class="form-group">' +
-          '<input type="email" class="form-control" name="credentials[email]"  id="sign-up-email" placeholder="email">' +
+          '<input type="email" class="form-control" name="credentials[email]"  id="sign-up-email" placeholder="email" value="">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control"  name="credentials[password]" id="sign-up-password"  placeholder="password">' +
+          '<input type="password" class="form-control"  name="credentials[password]" id="sign-up-password"  placeholder="password" value="">' +
         '</div>' +
         '<div class="form-group">' +
-          '<input type="password" class="form-control" name="credentials[password_confirmation]" id="sign-up-password-confirm" placeholder="confirm password">' +
+          '<input type="password" class="form-control" name="credentials[password_confirmation]" id="sign-up-password-confirm" placeholder="confirm password" value="">' +
         '</div>' +
         '<button type="submit" class="btn btn-default pull-right">submit</button>' +
         '<button type="button" class="btn btn-link pull-right" id="auth-cancel-btn">cancel</button>' +
