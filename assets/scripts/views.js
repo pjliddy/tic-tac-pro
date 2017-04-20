@@ -1,15 +1,17 @@
 'use strict'
 
+let audio = ''
+
 // initViews()
 // initialize views if needed
 
 const initViews = function () {
   // TO DO: should load view states into empty containers on index.html on app init
+  audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
 }
 
 const beep = function () {
   // play sound effect
-  const audio = new Audio('assets/audio/beep.mp3')
   audio.play()
 }
 // message()
