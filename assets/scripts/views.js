@@ -59,6 +59,11 @@ const onSplashScreenView = function () {
   $('.nav-state .btn-group .btn').removeClass('active')
 }
 
+const onCancelForm = function () {
+  beep()
+  onSplashScreenView()
+}
+
 // onSignUpView()
 // sets the html content of the content-state component to the sign up form
 
@@ -177,6 +182,7 @@ module.exports = {
   setPublicNav,
   setPrivateNav,
   onSplashScreenView,
+  onCancelForm,
   onSignUpView,
   onSignInView,
   onStartGameView,

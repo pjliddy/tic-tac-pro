@@ -137,7 +137,7 @@ const addHandlers = () => {
   $('.content-state').on('submit', '#sign-in', onSignIn)
 
   // cancel link handler (used in sign up and sign in forms)
-  $('.content-state').on('click', '#auth-cancel-btn', views.onSplashScreenView)
+  $('.content-state').on('click', '#auth-cancel-btn', views.onCancelForm)
 
   // password change handlers
   $('.nav-state').on('click', '#change-password-btn', views.onChangePasswordView)
