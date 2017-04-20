@@ -7,6 +7,11 @@ const initViews = function () {
   // TO DO: should load view states into empty containers on index.html on app init
 }
 
+const beep = function () {
+  // play sound effect
+  const audio = new Audio('assets/audio/beep.mp3')
+  audio.play()
+}
 // message()
 // sets the html content of the message component in the game UI
 
@@ -58,6 +63,7 @@ const onSplashScreenView = function () {
 // sets the html content of the content-state component to the sign up form
 
 const onSignUpView = function () {
+  beep()
   const viewState = require('./views/content-sign-up.js').content
 
   message('')
@@ -83,6 +89,7 @@ const onSignUpView = function () {
 // sets the html content of the content-state component to the sign in form
 
 const onSignInView = function () {
+  beep()
   const viewState = require('./views/content-sign-in.js').content
 
   // apply jQuery cross fade to content change
@@ -110,13 +117,18 @@ const onChangePasswordView = function () {
   const viewState = require('./views/content-change-password.js').content
   // prevent default form post
   event.preventDefault()
-
+  beep()
   message('')
 
   // apply jQuery cross fade to content change
   $('.content-state').fadeOut(150, function () {
     $('.content-state').html(viewState).fadeIn(150)
   })
+}
+
+const onCancelPassword = function () {
+  beep()
+  onStartGameView()
 }
 
 // onStartGameView()
@@ -137,6 +149,7 @@ const onStartGameView = function () {
 // sets the html content of the content-state component to the play game viw
 
 const onPlayGameView = function () {
+  beep()
   const viewState = require('./views/content-play-game.js').content
 
   $('.content-state').html(viewState)
@@ -158,6 +171,7 @@ const onGameOverView = function () {
 
 module.exports = {
   initViews,
+  beep,
   message,
   addMessage,
   setPublicNav,
@@ -167,6 +181,7 @@ module.exports = {
   onSignInView,
   onStartGameView,
   onChangePasswordView,
+  onCancelPassword,
   onPlayGameView,
   onGameOverView
 }

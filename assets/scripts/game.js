@@ -39,6 +39,7 @@ const initGame = function () {
 // handle user's choice of square in the game
 
 const chooseSquare = function (evt) {
+  views.beep()
   // get which square the player clicked on
   const sqNum = $(this).data('id')
   // store the move in the moves array

@@ -15,6 +15,7 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
+  views.beep()
   // validate user input
   if (data.credentials.email.length === 0) {
     views.message('email required')
@@ -40,6 +41,7 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
+  views.beep()
   // validate user input
   if (!data.credentials.email) {
     views.message('email required')
@@ -57,11 +59,6 @@ const onSignIn = function (event) {
 // handle form submission for user sign in as part of sign up
 
 const onCompleteSignIn = function (data) {
-  // get data object from user sign in form
-  // const data = getFormFields(this)
-  // prevent default form post
-  // event.preventDefault()
-  // validate user input
   if (!data.credentials.email) {
     views.message('email required')
   } else if (!data.credentials.password) {
@@ -82,6 +79,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(event.target)
   // prevent default form post
   event.preventDefault()
+  views.beep()
   // validate user input
   if (!data.passwords.old) {
     views.message('old password required')
@@ -101,6 +99,7 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // prevent default form post
   event.preventDefault()
+  views.beep()
   // make API call and set up handlers for callbacks
   api.signOut()
     .then(ui.signOutSuccess)
@@ -113,6 +112,7 @@ const onSignOut = function (event) {
 const onPlayGame = function () {
   // set view state to playable game view
   views.onPlayGameView()
+  views.beep()
   // initialize game engine
   game.initGame()
   // make API call and set up handlers for callbacks
@@ -142,7 +142,7 @@ const addHandlers = () => {
   // password change handlers
   $('.nav-state').on('click', '#change-password-btn', views.onChangePasswordView)
   $('.content-state').on('submit', '#change-password', onChangePassword)
-  $('.content-state').on('click', '#change-password-cancel-btn', views.onStartGameView)
+  $('.content-state').on('click', '#change-password-cancel-btn', views.onCancelPassword)
 
   // sign out handlers
   $('.nav-state').on('click', '#sign-out-btn', onSignOut)
