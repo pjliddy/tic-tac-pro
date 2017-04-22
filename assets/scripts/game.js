@@ -47,8 +47,10 @@ const chooseSquare = function (evt) {
   const sqNum = $(this).data('id')
   // store the move in the moves array
   moves[sqNum] = player.toLowerCase()
+
   // update game and UI
   updateSquare(this)
+
   // determine if game is over
   const status = gameStatus()
   // set over flag for update API call

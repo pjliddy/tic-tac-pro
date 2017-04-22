@@ -8,6 +8,9 @@ let audio = ''
 const initViews = function () {
   // TO DO: should load view states into empty containers on index.html on app init
   audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
+  setPublicNav()
+  onSplashScreenView()
+  setFooter()
 }
 
 const beep = function () {
@@ -43,6 +46,11 @@ const setPublicNav = function () {
 const setPrivateNav = function () {
   const viewState = require('./views/nav-private.js').content
   $('.nav-state').html(viewState)
+}
+
+const setFooter = function () {
+  const viewState = require('./views/footer.js').content
+  $('footer').html(viewState).fadeIn(150)
 }
 
 // onSplashScreenView()
@@ -183,6 +191,7 @@ module.exports = {
   addMessage,
   setPublicNav,
   setPrivateNav,
+  setFooter,
   onSplashScreenView,
   onCancelForm,
   onSignUpView,
