@@ -25,7 +25,7 @@ const signInSuccess = (response) => {
   // store the user object returned by response
   store.user = response.user
   views.onStartGameView()
-  views.message('sign in success')
+  views.message('welcome')
 }
 
 // signInFailure()

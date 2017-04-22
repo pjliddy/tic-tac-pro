@@ -1,14 +1,16 @@
 'use strict'
 
-const squares = new Array(9)
-const cues = new Array(8)
+const NUM_SQUARES = 9
+const squares = new Array(NUM_SQUARES).fill('')
+const cues = []
 
 const init = function () {
   // create 9 square objects
-  squares.forEach(square => {
-    square = require('./square.js')
-    squares.push(square)
+  squares.forEach((e, i, a) => {
+    const square = require('./square.js')
+    squares[i] = square
   })
+
   // create cues with squares
 
   const trios = [
@@ -22,10 +24,10 @@ const init = function () {
     [2, 4, 6]
   ]
 
-  trios.forEach(trio => {
+  trios.forEach((e, i, a) => {
     const cue = require('./cue.js')
-    cue.init(trio)
-    cues.push(cue)
+    cue.init(e)
+    cues[i] = cue
   })
 
   return squares.length

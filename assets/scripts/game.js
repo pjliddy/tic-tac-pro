@@ -2,6 +2,7 @@
 const api = require('./auth/api')
 const ui = require('./auth/ui')
 const views = require('./views.js')
+const board = require('./board.js')
 
 // map unicode chars with better shapes for X and O
 const xChar = '\u2715'
@@ -29,6 +30,8 @@ const cues = [
 // initialize game engine
 
 const initGame = function () {
+  board.init()
+
   moves.fill('')
   turn = 0
   player = 'x'
