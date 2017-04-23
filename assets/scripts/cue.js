@@ -4,15 +4,11 @@
 //    Represents a series squares on the board (rows, columns, or diagonals)
 //    that, when filled, win the game
 
-let squares = new Array(3)
+const Cue = function (squares) {
+  // s1, s2, and s3 are three square objects
+  this.squares = squares
 
-//  Cue.init()
-//    Assign squares to the Cue object
-
-const init = function (sqArray) {
-  // s1, s2, and s3 are square objects
-  squares = sqArray
-  return squares.length
+  return this.squares.length
 }
 
 //  Cue.won()
@@ -23,7 +19,7 @@ const init = function (sqArray) {
 //  check themselves if one of their squares updates, rather than
 //  the board always checking. The cue should yell "Bingo!"
 
-const won = function () {
+Cue.prototype.status = function () {
   if (this.squares[0].value === this.squares[1].value &&
     this.squares[0].value === this.squares[2].value &&
     this.squares[1].value === this.squares[2].value &&
@@ -40,6 +36,5 @@ const won = function () {
 }
 
 module.exports = {
-  init,
-  won
+  Cue
 }

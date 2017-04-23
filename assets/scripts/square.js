@@ -3,53 +3,52 @@
 //  Square Object
 //    Represents individual squares on the board
 
-const xChar = '\u2715'
-const oChar = '\u3007'
+const X_CHAR = '\u2715'
+const O_CHAR = '\u3007'
 
-// this.value = null (default) | 'X' | 'O'
-let value = null
-// element = html div for square
-let element = null
+const Square = function (div) {
+  // value = null (default) | 'X' | 'O'
+  this.value = null
+  // wrapper = html div for square
+  this.wrapper = div
 
-//  Square.init()
-//    Set the square object to its default state
-
-const init = function (div) {
-  element = div
-  return reset()
+  return this.value
 }
 
 //  Square.reset()
 //    Returns the square object to its default state
 
-const reset = function () {
-  value = null
+Square.prototype.reset = function () {
+  this.value = null
   return this.value
 }
 
 //  Square.render()
 //    Update display properties for a square object
 
-const render = function () {
+Square.prototype.render = function (player) {
   // update UI when there is one
-  if (value === null) {
-    return '[ ]'
+  let playerChar
+
+  if (player === 'x') {
+    playerChar = X_CHAR
   } else {
-    return '[' + value + ']'
+    playerChar = O_CHAR
   }
+
+  // apply jQuery cross fade to content change
+  $(this.wrapper).html(playerChar).fadeIn(100)
 }
 
 //  Square.select(player)
 //    Sets its value to 'x' or 'o' when selected
 
-const select = function (player) {
-  value = player
-  return value
+Square.prototype.select = function (player) {
+  this.value = player
+  this.render(player)
+  return this.value
 }
 
 module.exports = {
-  init,
-  reset,
-  render,
-  select
+  Square
 }

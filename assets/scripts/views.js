@@ -5,7 +5,7 @@ let audio = ''
 // initViews()
 // initialize views if needed
 
-const initViews = function () {
+const init = function () {
   // TO DO: should load view states into empty containers on index.html on app init
   audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
   setPublicNav()
@@ -181,11 +181,12 @@ const onGameOverView = function () {
   // apply jQuery fade to content change
   $('.navbar-right').fadeIn(150)
   $('.border-center').html(viewState).fadeIn(150)
-  message('game over')
+  // message('game over')
 }
 
 module.exports = {
-  initViews,
+  init
+  ,
   beep,
   message,
   addMessage,

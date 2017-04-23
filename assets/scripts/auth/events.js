@@ -149,7 +149,7 @@ const addHandlers = () => {
 
   // game play handlers
   $('.content-state').on('click', '#play-game-btn', onPlayGame)
-  $('.content-state').on('click', '.play-btn', game.chooseSquare)
+  $('.content-state').on('click', '.btn-move', game.chooseSquare)
 }
 
 module.exports = {

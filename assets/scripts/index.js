@@ -21,5 +21,5 @@ const views = require('./views.js')
 $(() => {
   authEvents.addHandlers()
   // initialize application view states
-  views.initViews()
+  views.init()
 })
