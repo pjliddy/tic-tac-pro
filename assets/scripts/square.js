@@ -57,7 +57,6 @@ Square.prototype.select = function (player) {
 
 Square.prototype.clear = function () {
   this.wrapper.clear()
-  // $(this.wrapper).html('')
 }
 
 module.exports = {

@@ -20,7 +20,7 @@ const initGame = function () {
   turn = 0
   player = 'x'
   over = false
-  views.message('player ' + player + '\'s turn')
+  views.message('player ' + player.toUpperCase() + '\'s turn')
 }
 
 // chooseSquare()
@@ -39,11 +39,7 @@ const chooseSquare = function (evt) {
   const status = board.status()
 
   // set over flag for update API call
-  if (!status) {
-    over = false
-  } else {
-    over = true
-  }
+  over = status
 
   // set values of data object for update API call
   const data = {
@@ -100,14 +96,12 @@ const chooseSquare = function (evt) {
 
 const togglePlayer = function () {
   turn++
+  player = (player === 'x') ? 'o' : 'x'
 
-  if (player === 'x') {
-    player = 'o'
-  } else {
-    player = 'x'
-  }
   // update message to player in UI
   views.message('player ' + player.toUpperCase() + '\'s turn')
+
+  return player
 }
 
 module.exports = {

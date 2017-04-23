@@ -1,12 +1,25 @@
 'use strict'
 
 let audio = ''
+let messageView = null
+let navStateView = null
+let contentView = null
+let footerView = null
 
 // initViews()
-// initialize views if needed
+//    initialize views if needed
 
 const init = function () {
+  // set up audio
   audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
+
+  // create View objects
+  const Views = require('./view.js')
+  messageView = new Views.View($('.message'))
+  navStateView = new Views.View($('.nav-state'))
+  contentView = new Views.View($('.content-state'))
+  footerView = new Views.View($('footer'))
+
   setPublicNav()
   onSplashScreenView()
   setFooter()
@@ -16,45 +29,48 @@ const beep = function () {
   // play sound effect
   audio.play()
 }
+
 // message()
-// sets the html content of the message component in the game UI
+//    sets the html content of the message component in the game UI
 
 const message = function (msg) {
-  $('.message').html(msg)
+  messageView.render(msg)
 }
 
 // addMessage()
-// add a second line of text to the message component in the game UI
+//    add a second line of text to the message component in the game UI
 
 const addMessage = function (msg) {
-  const current = $('.message').html()
-  $('.message').html(current + '<br/>' + msg)
+  messageView.render(messageView.content() + '<br/>' + msg)
 }
 
 // setPublicNav()
-// sets the html content of the nav-state component for unauthenticated users
+//    sets the html content of the nav-state component for unauthenticated users
 
 const setPublicNav = function () {
   const viewState = require('./views/nav-public.js').content
-  $('.nav-state').html(viewState)
+  navStateView.render(viewState)
 }
 
 // setPrivateNav()
-// sets the html content of the nav-state component for authenticated users
+//    sets the html content of the nav-state component for authenticated users
 
 const setPrivateNav = function () {
   const viewState = require('./views/nav-private.js').content
-  $('.nav-state').html(viewState)
+  navStateView.render(viewState)
 }
+
+// setFooter()
+//    sets the html content of the footer component
 
 const setFooter = function () {
   const viewState = require('./views/footer.js').content
-  $('footer').html(viewState).fadeIn(150)
+  footerView.renderFadeIn(viewState, 150)
 }
 
 // onSplashScreenView()
-// sets the html content of the content-state component to the default splash
-// screen for unauthenticated users
+//    sets the html content of the content-state component to the default splash
+//    screen for unauthenticated users
 
 const onSplashScreenView = function () {
   const viewState = require('./views/content-splash.js').content
@@ -74,7 +90,7 @@ const onCancelForm = function () {
 }
 
 // onSignUpView()
-// sets the html content of the content-state component to the sign up form
+//    sets the html content of the content-state component to the sign up form
 
 const onSignUpView = function () {
   beep()
@@ -100,7 +116,7 @@ const onSignUpView = function () {
 }
 
 // onSignInView()
-// sets the html content of the content-state component to the sign in form
+//    sets the html content of the content-state component to the sign in form
 
 const onSignInView = function () {
   beep()
@@ -124,13 +140,14 @@ const onSignInView = function () {
 }
 
 // onChangePasswordView()
-// sets the html content of the content-state component to the
-// change password form
+//    sets the html content of the content-state component to the
+//    change password form
 
 const onChangePasswordView = function () {
-  const viewState = require('./views/content-change-password.js').content
   // prevent default form post
   event.preventDefault()
+
+  const viewState = require('./views/content-change-password.js').content
   beep()
   message('')
 
@@ -146,7 +163,8 @@ const onCancelPassword = function () {
 }
 
 // onStartGameView()
-// sets the html content of the content-state component to the start game view
+//    sets the html content of the content-state component
+//    to the start game view
 
 const onStartGameView = function () {
   const viewState = require('./views/content-start-game.js').content
@@ -160,7 +178,8 @@ const onStartGameView = function () {
 }
 
 // onPlayGameView()
-// sets the html content of the content-state component to the play game viw
+//    sets the html content of the content-state component
+//    to the play game view
 
 const onPlayGameView = function () {
   beep()
@@ -172,7 +191,7 @@ const onPlayGameView = function () {
 }
 
 // onGameOverView()
-// sets the html content of the content-state component to the game over view
+//    sets the html content of the content-state component to the game over view
 
 const onGameOverView = function () {
   const viewState = '<button class="btn btn-default btn-lg btn-grid" id="play-game-btn">play</button>'

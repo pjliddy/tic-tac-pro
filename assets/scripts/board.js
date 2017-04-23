@@ -34,6 +34,13 @@ const Board = function () {
   return this.squares.length
 }
 
+//  Board.select()
+//    Board selects one of its squares by telling the square to select itself
+
+Board.prototype.select = function (sqNum, player) {
+  this.squares[sqNum].select(player)
+}
+
 // Board.status()
 //   checks all cues and
 //   returns "1" (x) or "-1" (o) for a winner or "0" for a tie
@@ -50,23 +57,15 @@ Board.prototype.status = function () {
   return result
 }
 
-//  Board.select()
-//    Board selects one of its squares by telling the square to select itself
-
-Board.prototype.select = function (sqNum, player) {
-  this.squares[sqNum].select(player)
-}
-
 // Board.clear()
 //    Clear any active buttons from board squares when the game is over
 
 Board.prototype.clear = function () {
-  // create 9 square objects
-  this.squares.forEach(square => {
-    if (square.value === null) {
-      square.clear()
-    }
-  })
+  this.squares.filter(
+    square => square.value === null
+  ).forEach(
+    square => square.clear()
+  )
 }
 
 module.exports = {
