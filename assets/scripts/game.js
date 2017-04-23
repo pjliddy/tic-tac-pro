@@ -59,7 +59,6 @@ const chooseSquare = function (evt) {
   // if game is not over yet
   if (!over && turn < 8) {
     // update turn and player
-    turn++
     togglePlayer()
 
     // save move with API
@@ -100,6 +99,8 @@ const chooseSquare = function (evt) {
 // swith between 'x' and 'o' player for next turn
 
 const togglePlayer = function () {
+  turn++
+
   if (player === 'x') {
     player = 'o'
   } else {
