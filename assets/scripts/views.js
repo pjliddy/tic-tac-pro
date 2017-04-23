@@ -6,7 +6,6 @@ let audio = ''
 // initialize views if needed
 
 const init = function () {
-  // TO DO: should load view states into empty containers on index.html on app init
   audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
   setPublicNav()
   onSplashScreenView()
