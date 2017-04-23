@@ -39,10 +39,10 @@ const Board = function () {
 //   returns "1" (x) or "-1" (o) for a winner or "0" for a tie
 
 Board.prototype.status = function () {
-  const result = null
+  let result = null
 
   for (const cue in this.cues) {
-    const result = this.cues[cue].status()
+    result = this.cues[cue].status()
     if (result) {
       return result
     }

@@ -16,6 +16,7 @@ const Cue = function (squares) {
 //    returns the winner ('X' or 'O') or false
 
 Cue.prototype.status = function () {
+  console.log(`cue status [${this.squares[0].value}, ${this.squares[1].value}, ${this.squares[2].value}]`)
   // if all three are the same (real) value
   if (this.squares[0].value === this.squares[1].value &&
       this.squares[0].value === this.squares[2].value &&
