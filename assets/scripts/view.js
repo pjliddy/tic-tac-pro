@@ -14,6 +14,14 @@ View.prototype.render = function (content) {
   $(this.wrapper).html(content)
 }
 
+// View.renderCrossFade(content, rate)
+//    updates the html of the View objects with a cross fade
+
+View.prototype.renderCrossFade = function (content, rate) {
+  $(this.wrapper).fadeOut(150, () => $(this.wrapper).html(content).fadeIn(150)
+  )
+}
+
 // View.renderFadeIn(content, rate)
 //    updates the html of the View objects with a fadeIn
 

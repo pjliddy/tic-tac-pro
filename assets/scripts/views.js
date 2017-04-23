@@ -11,7 +11,9 @@ let footerView = null
 
 const init = function () {
   // set up audio
-  audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3')
+  audio = new Audio(
+    'https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3'
+  )
 
   // create View objects
   const Views = require('./view.js')
@@ -20,8 +22,10 @@ const init = function () {
   contentView = new Views.View($('.content-state'))
   footerView = new Views.View($('footer'))
 
+  // init Application Views
   setPublicNav()
   onSplashScreenView()
+  messageView.clear()
   setFooter()
 }
 
@@ -74,11 +78,7 @@ const setFooter = function () {
 
 const onSplashScreenView = function () {
   const viewState = require('./views/content-splash.js').content
-
-  // apply jQuery cross fade to content change
-  $('.content-state').fadeOut(150, function () {
-    $('.content-state').html(viewState).fadeIn(150)
-  })
+  contentView.renderCrossFade(viewState, 150)
 
   // reset buttons in navbar
   $('.nav-state .btn-group .btn').removeClass('active')
@@ -94,21 +94,11 @@ const onCancelForm = function () {
 
 const onSignUpView = function () {
   beep()
+  messageView.clear()
   const viewState = require('./views/content-sign-up.js').content
-
-  message('')
-
-  // apply jQuery cross fade to content change
-  $('.content-state').fadeOut(150, function () {
-    $('.content-state').html(viewState).fadeIn(150)
-  })
+  contentView.renderCrossFade(viewState, 150)
 
   // set active states for navbar buttons when selected
-  // TO DO: use Bootstrap's native radio button functionality to
-  // automatically set states of buttons in group
-  // $('#sign-up-btn').addClass('active')
-  // $('#sign-in-btn').removeClass('active')
-
   $('.nav-state .btn-group .btn').click(function () {
     $('.nav-state .btn-group .btn').removeClass('active')
     $(this).addClass('active')
@@ -120,19 +110,11 @@ const onSignUpView = function () {
 
 const onSignInView = function () {
   beep()
+  messageView.clear()
   const viewState = require('./views/content-sign-in.js').content
+  contentView.renderCrossFade(viewState, 150)
 
-  // apply jQuery cross fade to content change
-  $('.content-state').fadeOut(150, function () {
-    $('.content-state').html(viewState).fadeIn(150)
-  })
-  message('')
   // set active states for navbar buttons when selected
-  // TO DO: use Bootstrap's native radio button functionality to
-  // automatically set states of buttons in group
-  // $('#sign-in-btn').addClass('active')
-  // $('#sign-up-btn').removeClass('active')
-
   $('.nav-state .btn-group .btn').click(function () {
     $('.nav-state .btn-group .btn').removeClass('active')
     $(this).addClass('active')
@@ -146,16 +128,15 @@ const onSignInView = function () {
 const onChangePasswordView = function () {
   // prevent default form post
   event.preventDefault()
-
-  const viewState = require('./views/content-change-password.js').content
   beep()
-  message('')
-
-  // apply jQuery cross fade to content change
-  $('.content-state').fadeOut(150, function () {
-    $('.content-state').html(viewState).fadeIn(150)
-  })
+  messageView.clear()
+  const viewState = require('./views/content-change-password.js').content
+  contentView.renderCrossFade(viewState, 150)
 }
+
+// onCancelPassword()
+//    resets the html content of the content-state component if user
+//    cancels the change password form
 
 const onCancelPassword = function () {
   beep()
@@ -169,12 +150,8 @@ const onCancelPassword = function () {
 const onStartGameView = function () {
   const viewState = require('./views/content-start-game.js').content
 
-  // apply jQuery cross fade to content change
-  $('.content-state').fadeOut(150, function () {
-    setPrivateNav()
-    // message('')
-    $('.content-state').html(viewState).fadeIn(150)
-  })
+  setPrivateNav()
+  contentView.renderCrossFade(viewState, 150)
 }
 
 // onPlayGameView()
@@ -185,7 +162,8 @@ const onPlayGameView = function () {
   beep()
   const viewState = require('./views/content-play-game.js').content
 
-  $('.content-state').html(viewState)
+  // $('.content-state').html(viewState)
+  contentView.renderFadeIn(viewState, 150)
   // apply jQuery fade to content change
   $('.navbar-right').fadeOut(150)
 }
