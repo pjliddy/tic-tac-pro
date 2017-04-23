@@ -11,8 +11,10 @@ const O_CHAR = '\u3007'
 const Square = function (div) {
   // value = null (default) | 'X' | 'O'
   this.value = null
-  // wrapper = html div for square
-  this.wrapper = div
+
+  // view object to handle render updates
+  const Views = require('./view.js')
+  this.wrapper = new Views.View(div)
 
   return this.value
 }
@@ -38,8 +40,7 @@ Square.prototype.render = function (player) {
     playerChar = O_CHAR
   }
 
-  // apply jQuery cross fade to content change
-  $(this.wrapper).html(playerChar).fadeIn(150)
+  this.wrapper.renderFadeIn(playerChar, 150)
 }
 
 //  Square.select(player)
@@ -55,7 +56,8 @@ Square.prototype.select = function (player) {
 //    Clear active button from board square when the game is over
 
 Square.prototype.clear = function () {
-  $(this.wrapper).html('')
+  this.wrapper.clear()
+  // $(this.wrapper).html('')
 }
 
 module.exports = {
