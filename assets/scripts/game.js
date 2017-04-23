@@ -16,7 +16,6 @@ let board
 
 const initGame = function () {
   board = new Boards.Board()
-
   moves.fill('')
   turn = 0
   player = 'x'
@@ -73,7 +72,7 @@ const chooseSquare = function (evt) {
     data.game.over = over
     views.onGameOverView()
     // disable all buttons remaining
-    board.lock()
+    board.clear()
 
     api.updateGame(data)
       .then(ui.updateGameSuccess)
@@ -108,22 +107,6 @@ const togglePlayer = function () {
   }
   // update message to player in UI
   views.message('player ' + player.toUpperCase() + '\'s turn')
-}
-
-// disableEmptySquares()
-// when the game is over, remove any remaing buttons from board squares
-
-const disableEmptySquares = function () {
-  // find empty values in turns[]
-  for (let i = 0; i < moves.length; i++) {
-    // clear the content of squares that still have buttons
-    if (moves[i] !== '') {
-      // apply jQuery cross fade to content change
-      $('.btn-move[data-id]').fadeOut(100, function () {
-        $('.btn-move[data-id]').closest('.square').html('').fadeIn(100)
-      })
-    }
-  }
 }
 
 module.exports = {

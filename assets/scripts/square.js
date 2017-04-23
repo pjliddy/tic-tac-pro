@@ -51,7 +51,10 @@ Square.prototype.select = function (player) {
   return this.value
 }
 
-Square.prototype.lock = function () {
+//  Square.clear()
+//    Clear active button from board square when the game is over
+
+Square.prototype.clear = function () {
   $(this.wrapper).html('')
 }
 

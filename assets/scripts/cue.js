@@ -11,7 +11,7 @@ const Cue = function (squares) {
   return this.squares.length
 }
 
-//  Cue.won()
+//  Cue.status()
 //    Cue checks if values of its squares match and
 //    returns the winner ('X' or 'O') or false
 
