@@ -185,8 +185,7 @@ const onGameOverView = function () {
 }
 
 module.exports = {
-  init
-  ,
+  init,
   beep,
   message,
   addMessage,

@@ -1,10 +1,12 @@
 'use strict'
 
-//  Square Object
-//    Represents individual squares on the board
+// unicode symbols for more geometric 'x' and 'o' char
 
 const X_CHAR = '\u2715'
 const O_CHAR = '\u3007'
+
+// Square Object
+//    Represents individual squares on the board
 
 const Square = function (div) {
   // value = null (default) | 'X' | 'O'
@@ -23,8 +25,8 @@ Square.prototype.reset = function () {
   return this.value
 }
 
-//  Square.render()
-//    Update display properties for a square object
+//  Square.render(player)
+//    Update display properties for a player move
 
 Square.prototype.render = function (player) {
   // update UI when there is one
@@ -37,7 +39,7 @@ Square.prototype.render = function (player) {
   }
 
   // apply jQuery cross fade to content change
-  $(this.wrapper).html(playerChar).fadeIn(100)
+  $(this.wrapper).html(playerChar).fadeIn(150)
 }
 
 //  Square.select(player)
@@ -47,6 +49,10 @@ Square.prototype.select = function (player) {
   this.value = player
   this.render(player)
   return this.value
+}
+
+Square.prototype.lock = function () {
+  $(this.wrapper).html('')
 }
 
 module.exports = {

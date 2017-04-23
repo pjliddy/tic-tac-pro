@@ -1,24 +1,18 @@
 'use strict'
 
-const NUM_SQUARES = 9
-const squares = new Array(NUM_SQUARES).fill('')
-const cues = []
-
-//  Board Object Prototype:
+//  Board Object
 //    Represents the game board
 
 const Board = function () {
-  // initialze squares
-  this.numSquares = 9
-  this.squares = new Array(this.numSquares).fill('')
+  // initialze board
+  this.squares = new Array(9).fill('')
   this.cues = []
-
+  // define a Square object
   const Squares = require('./square.js')
 
   // create 9 square objects
   this.squares.forEach((e, i, a) => {
-    const square = new Squares.Square($('.grid .square')[i])
-    this.squares[i] = square
+    this.squares[i] = new Squares.Square($('.grid .square')[i])
   })
 
   // create cues made of squares
@@ -30,22 +24,23 @@ const Board = function () {
   const Cues = require('./cue.js')
 
   trios.forEach((e, i, a) => {
-    const squares = [this.squares[e[0]], this.squares[e[1]], this.squares[e[2]]]
-    const cue = new Cues.Cue(squares)
-    cues[i] = cue
+    const cue = new Cues.Cue(
+      [this.squares[e[0]], this.squares[e[1]], this.squares[e[2]]]
+    )
+    this.cues.push(cue)
   })
 
-  return squares.length
+  return this.squares.length
 }
 
-// status()
-// checks all cues and returns "x" or "o" if there's a winner or 0 for a tie
+// Board.status()
+//   checks all cues and returns "x" or "o" for a winner or 0 for a tie
 
 Board.prototype.status = function () {
   const result = null
 
-  for (const cue in cues) {
-    const result = cues[cue].status()
+  for (const cue in this.cues) {
+    const result = this.cues[cue].status()
     if (result) {
       return result
     }
@@ -53,8 +48,23 @@ Board.prototype.status = function () {
   return result
 }
 
+//  Board.select()
+//    Board selects one of its squares by telling the square to select itself
+
 Board.prototype.select = function (sqNum, player) {
   this.squares[sqNum].select(player)
+}
+
+// Board.lock()
+// when the game is over, clear any active buttons from board squares
+
+Board.prototype.lock = function () {
+  // create 9 square objects
+  this.squares.forEach(square => {
+    if (square.value === null) {
+      square.lock()
+    }
+  })
 }
 
 module.exports = {

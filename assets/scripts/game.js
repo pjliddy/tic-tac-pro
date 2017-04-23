@@ -4,10 +4,6 @@ const ui = require('./auth/ui')
 const views = require('./views.js')
 const Boards = require('./board.js')
 
-// map unicode chars with better shapes for X and O
-// const xChar = '\u2715'
-// const oChar = '\u3007'
-
 // define game variables
 const moves = new Array(9)
 let turn
@@ -34,16 +30,12 @@ const initGame = function () {
 const chooseSquare = function (evt) {
   // play sound effect
   views.beep()
-
   // get which square the player clicked on
   const sqNum = $(this).data('id')
-
   // store the move in the moves array
   moves[sqNum] = player.toLowerCase()
-
   // send player move to board
   board.select(sqNum, player)
-
   // determine if game is over
   const status = board.status()
 
@@ -81,7 +73,7 @@ const chooseSquare = function (evt) {
     data.game.over = over
     views.onGameOverView()
     // disable all buttons remaining
-    disableEmptySquares()
+    board.lock()
 
     api.updateGame(data)
       .then(ui.updateGameSuccess)

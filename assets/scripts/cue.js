@@ -2,7 +2,7 @@
 
 //  Cue Object
 //    Represents a series squares on the board (rows, columns, or diagonals)
-//    that, when filled, win the game
+//    that, when filled with identical values, indicate a win
 
 const Cue = function (squares) {
   // s1, s2, and s3 are three square objects
@@ -12,19 +12,16 @@ const Cue = function (squares) {
 }
 
 //  Cue.won()
-//    Cue checks if values of its squares match and returns the winner
-//    ('X' or 'O') or false
-
-//  NOTE: Squares should announce they've changed and cues should
-//  check themselves if one of their squares updates, rather than
-//  the board always checking. The cue should yell "Bingo!"
+//    Cue checks if values of its squares match and
+//    returns the winner ('X' or 'O') or false
 
 Cue.prototype.status = function () {
+  // if all three are the same (real) value
   if (this.squares[0].value === this.squares[1].value &&
-    this.squares[0].value === this.squares[2].value &&
-    this.squares[1].value === this.squares[2].value &&
-    this.squares[0].value) {
-    // all three are the same (return 1 for 'x', -1 for 'o', or 0 for tie)
+      this.squares[0].value === this.squares[2].value &&
+      this.squares[1].value === this.squares[2].value &&
+      this.squares[0].value) {
+    // (return 1 for 'x', -1 for 'o', or 0 for tie)
     if (this.squares[0].value === 'x') {
       return 1
     } else {
