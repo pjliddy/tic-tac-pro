@@ -51,7 +51,7 @@ App.prototype.onSignUp = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
-  this.views.beep()
+  // // this.// views.beep()
   // validate user input
   if (data.credentials.email.length === 0) {
     this.views.message('email required')
@@ -77,7 +77,7 @@ App.prototype.onSignIn = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
-  this.views.beep()
+  // this.// views.beep()
   // validate user input
   if (!data.credentials.email) {
     this.views.message('email required')
@@ -115,7 +115,7 @@ App.prototype.onChangePassword = function (event) {
   const data = getFormFields(event.target)
   // prevent default form post
   event.preventDefault()
-  this.views.beep()
+  // this.// views.beep()
   // validate user input
   if (!data.passwords.old) {
     this.views.message('old password required')
@@ -135,7 +135,7 @@ App.prototype.onChangePassword = function (event) {
 App.prototype.onSignOut = function (event) {
   // prevent default form post
   event.preventDefault()
-  this.views.beep()
+  // this.// views.beep()
   // make API call and set up handlers for callbacks
   api.signOut()
     .then(ui.signOutSuccess)
@@ -148,7 +148,7 @@ App.prototype.onSignOut = function (event) {
 App.prototype.onPlayGame = function () {
   // set view state to playable game view
   this.views.onPlayGameView()
-  this.views.beep()
+  // this.// views.beep()
   // initialize game engine
   game.initGame()
   // make API call and set up handlers for callbacks

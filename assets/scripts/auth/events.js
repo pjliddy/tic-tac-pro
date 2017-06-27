@@ -15,7 +15,7 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
-  views.beep()
+  // views.beep()
   // validate user input
   if (data.credentials.email.length === 0) {
     views.message('email required')
@@ -41,7 +41,7 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   // prevent default form post
   event.preventDefault()
-  views.beep()
+  // views.beep()
   // validate user input
   if (!data.credentials.email) {
     views.message('email required')
@@ -79,7 +79,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(event.target)
   // prevent default form post
   event.preventDefault()
-  views.beep()
+  // views.beep()
   // validate user input
   if (!data.passwords.old) {
     views.message('old password required')
@@ -99,7 +99,7 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // prevent default form post
   event.preventDefault()
-  views.beep()
+  // views.beep()
   // make API call and set up handlers for callbacks
   api.signOut()
     .then(ui.signOutSuccess)
@@ -112,7 +112,7 @@ const onSignOut = function (event) {
 const onPlayGame = function () {
   // set view state to playable game view
   views.onPlayGameView()
-  views.beep()
+  // views.beep()
   // initialize game engine
   game.initGame()
   // make API call and set up handlers for callbacks

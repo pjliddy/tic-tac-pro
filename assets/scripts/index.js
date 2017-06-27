@@ -22,4 +22,11 @@ $(() => {
   authEvents.addHandlers()
   // initialize application view states
   views.initViews()
+
+  // when client app loads, make a GET request to the API
+  // to wake up heroku while user signs up/in
+  $.ajax({
+    url: config.apiOrigin,
+    method: 'GET'
+  })
 })

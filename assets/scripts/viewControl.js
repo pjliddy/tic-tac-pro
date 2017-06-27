@@ -5,8 +5,8 @@
 
 const ViewControl = function () {
   // initialize audio
-  this.audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3'
-)
+//   this.audio = new Audio('https://s3.amazonaws.com/pliddy-ga/tic-tac-toe/audio/beep.mp3'
+// )
 
   // create View objects
   const Views = require('./view.js')
@@ -32,10 +32,10 @@ ViewControl.prototype.init = function () {
 // ViewControl.beep()
 //    plays beep mp.3 sound when player clicks UI buttons
 
-ViewControl.prototype.beep = function () {
-  // play sound effect
-  this.audio.play()
-}
+// ViewControl.prototype.beep = function () {
+//   // play sound effect
+//   this.audio.play()
+// }
 
 // ViewControl.message()
 //    sets the html content of the message component in the game UI
