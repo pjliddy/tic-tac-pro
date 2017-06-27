@@ -25,8 +25,10 @@ $(() => {
 
   // when client app loads, make a GET request to the API
   // to wake up heroku while user signs up/in
+
+  // adding .fail() to catch error since there are no unauthenticated API routes
   $.ajax({
     url: config.apiOrigin,
     method: 'GET'
-  }).then().fail()
+  }).fail()
 })
