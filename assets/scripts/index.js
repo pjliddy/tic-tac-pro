@@ -28,5 +28,5 @@ $(() => {
   $.ajax({
     url: config.apiOrigin,
     method: 'GET'
-  })
+  }).then().fail()
 })
